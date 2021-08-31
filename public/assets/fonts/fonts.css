@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'FntPri';
+  font-display: auto;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./Montserrat-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'FntPri';
+  font-display: auto;
+  font-weight: 500;
+  font-style: bold;
+  src: url(./Montserrat-Medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'FntSec';
+  font-display: auto;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./OpenSans-Regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'FntSec';
+  font-display: auto;
+  font-weight: 600;
+  font-style: bold;
+  src: url(./OpenSans-SemiBold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'FntFix';
+  font-display: auto;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./SourceCodePro-Regular.woff2) format('woff2');
+}

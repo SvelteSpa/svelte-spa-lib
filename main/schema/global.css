@@ -1,0 +1,329 @@
+@import './normalize.css';
+@import './reset.css';
+
+:root {
+  --fnt-pri: FntPri; /* primary */
+  --fnt-sec: FntSec; /* secondary */
+  --fnt-fix: FntFix; /* fixed */
+  --fnt-ico: FntIco; /* sysicons */
+}
+
+body {
+  /* body: full screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  color: var(--pri-fg);
+  background: var(--pri-bg);
+
+  font-family: var(--fnt-pri);
+
+  /* prevent auto refresh on mobile devices */
+  overscroll-behavior: contain;
+
+  user-select: text;
+}
+
+button {
+  color: var(--btn-fg);
+  background: var(--btn-bg);
+
+  cursor: pointer;
+
+  padding: var(--btn-pad);
+  margin: var(--btn-mrg);
+  border-radius: 4px;
+
+  text-transform: uppercase;
+  text-align: center;
+  font-size: var(--btn-fts);
+  font-weight: bold;
+
+  line-height: 1.8;
+}
+
+button.sel {
+  background: var(--btn-bs);
+}
+
+button:disabled {
+  background: var(--btn-bd);
+  cursor: default;
+}
+
+button:not(:disabled):hover {
+  background: var(--btn-bh);
+}
+
+button.sel:not(:disabled):hover {
+  background: var(--btn-bs);
+}
+
+/* sizes and positions */
+.wC /*C=100*/ {
+  width: 100%;
+}
+
+.whC /*C=100*/ {
+  width: 100%;
+  height: 100%;
+}
+
+/* transparent curtain */
+x-curtain {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #00000008;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* system screen */
+x-sysScr {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  overflow: auto;
+}
+
+/* flex */
+.f-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+f-row {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+f-bar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+/* bar that fills provided space */
+f-barC {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+f-gr {
+  flex-grow: 1;
+  height: 0; /* TODO - needed? */
+}
+
+/* centered bar */
+f-bcr {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+f-bcrC {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* centered column nowrap */
+f-ccn {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* column */
+.f-col {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+f-col {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/* column, 100% */
+f-colC {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+}
+
+/* row, 100% */
+f-rowC {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+
+/* column centered */
+f-ccr {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+f-ccrC {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+/* scrollbars */
+:not(textarea)::-webkit-scrollbar {
+  width: var(--scb-wdt);
+  height: var(--scb-wdt);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scb-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scb-fg);
+  border: var(--scb-brd) solid var(--scb-bg);
+  border-radius: var(--scb-wdt);
+}
+
+/* text and icons */
+
+/* sysicons */
+x-ico {
+  display: inline-block;
+  font-family: var(--fnt-ico);
+  font-size: 120%;
+}
+
+/* sysicons, pointer */
+x-icp {
+  cursor: pointer;
+  display: inline-block;
+  font-family: var(--fnt-ico);
+  font-size: 120%;
+}
+
+.caps {
+  text-transform: uppercase;
+  font-size: 94%;
+}
+
+/* boxes */
+.box {
+  position: relative;
+  padding: var(--p2);
+  padding-top: var(--p4);
+  margin: var(--p4) var(--p2);
+  border: thin solid var(--x-box);
+  border-radius: var(--p2);
+}
+
+.box .lbl {
+  position: absolute;
+  top: -0.6em;
+  background: var(--pri-bg);
+  padding: 0 var(--p2);
+}
+
+hr {
+  width: 100%;
+  margin: var(--hr-mrg);
+  border-top: thin solid gray;
+  border-top-color: var(--pri-hr);
+}
+
+/* decoration */
+.ptr {
+  cursor: pointer;
+}
+
+.lPriBrd {
+  border-left: thin solid var(--pri-brd);
+}
+
+.rPriBrd {
+  border-right: thin solid var(--pri-brd);
+}
+
+.lSecBrd {
+  border-left: thin solid var(--sec-brd);
+}
+
+.rSecBrd {
+  border-right: thin solid var(--sec-brd);
+}
+
+/* svg */
+svg {
+  stroke-linecap: round;
+}
+
+/* inputs */
+label.inp {
+  position: relative;
+  display: inline-block;
+  padding: var(--p2) 0;
+  margin: 0 auto;
+  margin-top: 1.2em;
+}
+
+label.inp input,
+label.inp textarea {
+  color: var(--inp-fg);
+  width: 100%;
+  height: 100%;
+  padding: var(--p2) var(--p4);
+  border: thin solid var(--inp-brd);
+  border-radius: 2px;
+}
+
+label.inp span {
+  position: absolute;
+  top: -1.1em;
+  left: var(--p2);
+  padding: 0 var(--p2);
+  font-size: 80%;
+}
+
+label.inp .err {
+  border-color: var(--err-brd);
+  outline-color: var(--err-brd);
+}
+
+/* partial schemes */
+.sch-sec {
+  color: var(--sec-fg);
+  background: var(--sec-bg);
+  padding: var(--p2);
+  font-family: var(--fnt-pri);
+}

@@ -1,0 +1,280 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "3838a5aba604532d2dbae5904615ea39",
+      "css": "down",
+      "code": 59392,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "c21d309f797d3644dc8d28c4617738ce",
+      "css": "left",
+      "code": 59393,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "1d35198f5190ec004dd4ec742fbe19ca",
+      "css": "right",
+      "code": 59394,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "040e72500c863813088c9f9c9415f8e9",
+      "css": "up",
+      "code": 59395,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "5e1ef647438e2204c15197c6efc4151e",
+      "css": "ok",
+      "code": 61549,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "44eb9d69bf3b9b74629ce6852a2f9681",
+      "css": "cancel",
+      "code": 61550,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "e0d15ef5945000f5f264acc35494002f",
+      "css": "basket",
+      "code": 59400,
+      "src": "typicons"
+    },
+    {
+      "uid": "8ed4884bf9b840729eef8f0bbd2b1dbb",
+      "css": "user0",
+      "code": 59401,
+      "src": "typicons"
+    },
+    {
+      "uid": "bczb7qup4axmc490xmuuv8qdhcnbgeyf",
+      "css": "user1",
+      "code": 59402,
+      "src": "typicons"
+    },
+    {
+      "uid": "b9cd6e266f74ac97272b2fabbfbd0b85",
+      "css": "userAdd0",
+      "code": 59403,
+      "src": "typicons"
+    },
+    {
+      "uid": "076f940ac56adee91dd43d6fd77dd0cf",
+      "css": "userAdd1",
+      "code": 59404,
+      "src": "typicons"
+    },
+    {
+      "uid": "344c1c070cd0018ced51d3f051c6f4dd",
+      "css": "userDel0",
+      "code": 59405,
+      "src": "typicons"
+    },
+    {
+      "uid": "d139ce97a43aedd333fa40f776328c3c",
+      "css": "userDel1",
+      "code": 59406,
+      "src": "typicons"
+    },
+    {
+      "uid": "a151e07df1262b33b210de5d956e4cc8",
+      "css": "menu0",
+      "code": 59411,
+      "src": "typicons"
+    },
+    {
+      "uid": "jh3jpcb1t1bcm80gidkadilh080aq79h",
+      "css": "menu1",
+      "code": 59412,
+      "src": "typicons"
+    },
+    {
+      "uid": "3a89ddb1c81111c15d6c4e26cc3c546a",
+      "css": "cog0",
+      "code": 59413,
+      "src": "typicons"
+    },
+    {
+      "uid": "dpxunrtmigvk6jm0ieo7axfsgzx4awll",
+      "css": "cog1",
+      "code": 59414,
+      "src": "typicons"
+    },
+    {
+      "uid": "3b00728aa97ad1a2581d414bd9d650bc",
+      "css": "heart0",
+      "code": 59407,
+      "src": "typicons"
+    },
+    {
+      "uid": "hi76m8qggwn5lbl286oeqp64q0n8kusy",
+      "css": "heart1",
+      "code": 59408,
+      "src": "typicons"
+    },
+    {
+      "uid": "a1d4b614f12cfe2b5aa66313ad88c90c",
+      "css": "users0",
+      "code": 59409,
+      "src": "typicons"
+    },
+    {
+      "uid": "x8m4z7b33cv1h2s784tjlam56uq40wtd",
+      "css": "users1",
+      "code": 59410,
+      "src": "typicons"
+    },
+    {
+      "uid": "bcdc294bb787b15203b82f2be8096548",
+      "css": "star0",
+      "code": 59418,
+      "src": "typicons"
+    },
+    {
+      "uid": "vyuzsm6wijlfwtjo4ifkoblfmsepk6g8",
+      "css": "star1",
+      "code": 59419,
+      "src": "typicons"
+    },
+    {
+      "uid": "wg849ixsobykxshs6efpc6fk4m0fq8bh",
+      "css": "mail",
+      "code": 59424,
+      "src": "typicons"
+    },
+    {
+      "uid": "40c9502d45c736a0a6ec45e6fbc28656",
+      "css": "ok0",
+      "code": 59425,
+      "src": "typicons"
+    },
+    {
+      "uid": "43fl9m553j1z5937vfjz0lgolrlspxwl",
+      "css": "ok1",
+      "code": 59426,
+      "src": "typicons"
+    },
+    {
+      "uid": "24aba8757d4a7b49568c98a577a85df3",
+      "css": "cancel0",
+      "code": 59427,
+      "src": "typicons"
+    },
+    {
+      "uid": "1dq4tek4k8ea7zlj4kc3w83itnutaxg5",
+      "css": "cancel1",
+      "code": 59428,
+      "src": "typicons"
+    },
+    {
+      "uid": "0677f879e75956571d8cbbb478487c47",
+      "css": "plus0",
+      "code": 59429,
+      "src": "typicons"
+    },
+    {
+      "uid": "1gf923f9wvaezxmfon515dglxa3drf0e",
+      "css": "plus1",
+      "code": 59430,
+      "src": "typicons"
+    },
+    {
+      "uid": "7b67ab93e2dd09f8884b574925ab9352",
+      "css": "minus0",
+      "code": 59431,
+      "src": "typicons"
+    },
+    {
+      "uid": "qab5uvjyoc3uu4d2pvt8soshtgkuvpak",
+      "css": "minus1",
+      "code": 59432,
+      "src": "typicons"
+    },
+    {
+      "uid": "77b3693facc3d803417105997b4ffe96",
+      "css": "facebook",
+      "code": 59433,
+      "src": "typicons"
+    },
+    {
+      "uid": "4568bba1dba45522fc539c733c9b35e5",
+      "css": "twitter",
+      "code": 59434,
+      "src": "typicons"
+    },
+    {
+      "uid": "6c985c88b4c460d6c5a3e34d53361286",
+      "css": "dot1",
+      "code": 59396,
+      "src": "typicons"
+    },
+    {
+      "uid": "1e29f134dfa565422897dacc67dee3e8",
+      "css": "dot0",
+      "code": 59397,
+      "src": "typicons"
+    },
+    {
+      "uid": "4a770f766e0c1f06ce850db219684355",
+      "css": "sq0",
+      "code": 59399,
+      "src": "typicons"
+    },
+    {
+      "uid": "0785c02e57804318c8fe070338f89cd9",
+      "css": "sq1",
+      "code": 59415,
+      "src": "typicons"
+    },
+    {
+      "uid": "8704cd847a47b64265b8bb110c8b4d62",
+      "css": "chDn",
+      "code": 59416,
+      "src": "entypo"
+    },
+    {
+      "uid": "c311c48d79488965b0fab7f9cd12b6b5",
+      "css": "chLft",
+      "code": 59417,
+      "src": "entypo"
+    },
+    {
+      "uid": "749e7d90a9182938180f1d2d8c33584e",
+      "css": "chRgt",
+      "code": 59420,
+      "src": "entypo"
+    },
+    {
+      "uid": "9c7ff134960bb5a82404e4aeaab366d9",
+      "css": "chUp",
+      "code": 59421,
+      "src": "entypo"
+    },
+    {
+      "uid": "b94db9f012742fbdde9cb59413e14e9b",
+      "css": "github",
+      "code": 59398,
+      "src": "typicons"
+    },
+    {
+      "uid": "w3nzesrlbezu6f30q7ytyq919p6gdlb6",
+      "css": "home1",
+      "code": 59422,
+      "src": "typicons"
+    },
+    {
+      "uid": "a42f298da5c64e646a5d532724cd6e15",
+      "css": "home0",
+      "code": 59423,
+      "src": "typicons"
+    }
+  ]
+}

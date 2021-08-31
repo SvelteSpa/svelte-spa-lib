@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'FntIco';
+  font-display: auto;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./sysicons.woff2) format('woff2');
+}

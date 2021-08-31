@@ -1,0 +1,48 @@
+import type { Assertable } from '@spa/assert'
+import assert from '@spa/assert'
+import type { str } from '@spa/typs'
+import { writable } from 'svelte/store'
+
+export let setEnv = (env: any) => {
+  $.isDev = env.DEV
+  $.isProd = env.PROD
+}
+
+export let errMsg = writable('')
+export let bigMsg = writable('')
+
+let $ = {
+  isDev: false,
+  isProd: true,
+
+  assert,
+
+  // validate and abort
+  sysErr: (val: Assertable, msgFun = () => '') =>
+    $.assert(val, () => 'syserr - ' + msgFun()),
+
+  // validate, print msg, continue
+  sysChk: (val: Assertable, msgFun: () => str): Assertable => {
+    if (!val) $.TR(0, msgFun)
+    return val
+  },
+
+  // trace
+  // levels: 0-always, 1-development
+  TR(lvl: number, msgFun: () => str) {
+    let trLvl = $.isDev ? 1 : 0
+    if (lvl <= trLvl) console.info('> ', msgFun())
+  },
+
+  // development.time function call
+  DEV(fun: () => void) {
+    if ($.isDev) fun()
+  },
+
+  // show system screen: message
+  setBigMsg: (msg: str) => bigMsg.set(msg),
+  // show system screen: error
+  setErrMsg: (msg: str) => errMsg.set(msg),
+}
+
+export default $
