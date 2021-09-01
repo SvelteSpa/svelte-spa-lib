@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import type { CompData } from './index'
+  import type { CompData } from '@spa/typs'
   import ctx from '@spa/ctx'
   import main from '@spa/main'
 

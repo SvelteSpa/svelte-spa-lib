@@ -1,6 +1,5 @@
 import run from '@spa/run'
 import type { chr, str, FnVoidUnd } from '@spa/typs'
-import type { SvelteComponent } from 'svelte'
 
 // border to separate from other components
 export type Brd = '' | 'r' | 'l'
@@ -19,6 +18,3 @@ export function notSelClick(onClick: FnVoidUnd) {
 
   return o
 }
-
-// components
-export type CompData = [typeof SvelteComponent, { [key: string]: any }]

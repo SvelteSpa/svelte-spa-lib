@@ -1,11 +1,10 @@
 <script context="module" lang="ts">
-  import type { int } from '@spa/typs'
+  import type { int, CompData } from '@spa/typs'
   import { bigMsg, errMsg } from '@spa/run'
   import { t } from '@spa/lang'
   import main from '@spa/main'
   import ctx from '@spa/ctx'
 
-  import type { CompData } from '@spa/block'
   import ModalDlg from '@spa/block/ModalDlg.svelte'
 
   import type { MenuEntry } from '@spa/block/SideMenu.svelte'

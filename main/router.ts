@@ -1,15 +1,12 @@
 import { split } from '@spa/str'
 import type { str } from '@spa/typs'
 import { tick } from 'svelte'
-import { readable, derived } from 'svelte/store'
+import { readable, get } from 'svelte/store'
 import type { Readable } from 'svelte/store'
 
 // the route follows #/, multiple stops separated by /, each multiple parts sep. by :
 export type RouteStop = str[]
 export type Route = RouteStop[]
-
-let getStopHead = (stop: RouteStop): str => stop[0] || ''
-let firstStopHead = (route: Route): str => getStopHead(route[0] || [])
 
 let encode = (_: str) => encodeURIComponent(_)
 let decode = (_: str) => decodeURIComponent(_)
@@ -46,9 +43,6 @@ let curRoute: Readable<Route> = readable(
   }
 )
 
-// reactive
-let curStop: Readable<str> = derived(curRoute, (_) => firstStopHead(_))
-
 // history
 async function push(route: Route, title = ''): Promise<void> {
   await tick()
@@ -82,11 +76,16 @@ async function replace(route: Route, title = ''): Promise<void> {
   window.dispatchEvent(new Event('hashchange'))
 }
 
+// util
+let firstStop = (): RouteStop => $.get()[0] || []
+let stopHead = (stop: RouteStop): str => stop[0] || ''
+let stopPar = (stop: RouteStop): str => stop[1] || ''
+
 // callback
-export type Cb = (head: str, route: Route) => void
+export type Cb = (head: str) => void
 let subscribe = (cb: Cb) => {
-  curStop.subscribe((head) => {
-    cb(head, getRoute())
+  curRoute.subscribe((_) => {
+    cb(stopHead(firstStop()))
   })
 }
 
@@ -95,11 +94,17 @@ let subscribe = (cb: Cb) => {
 history.scrollRestoration = 'auto'
 
 let $ = {
-  get: () => getRoute(),
+  get: () => get(curRoute),
   push,
   pop,
   replace,
   subscribe,
+
+  firstStop,
+  stopHead,
+  stopPar,
+
+  par: () => stopPar(firstStop()),
 }
 
 export default $

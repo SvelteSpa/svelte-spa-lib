@@ -1,9 +1,8 @@
 // do first
 import arr from '@spa/arr'
-import type { CompData } from '@spa/block'
 import type { MenuEntry, MenuEntriesNul } from '@spa/block/SideMenu.svelte'
 import run, { setEnv, initUserActions } from '@spa/run'
-import type { int, str, bool, FnVoidUnd } from '@spa/typs'
+import type { int, str, bool, FnVoidUnd, CompData } from '@spa/typs'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 import schema from './schema'
