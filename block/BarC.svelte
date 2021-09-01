@@ -14,9 +14,7 @@
 
 <f-barC
   class={clsBrd('sec', brd) + ' sch-sec' + (onClick ? ' ptr' : '')}
-  on:click={on.click}
-  on:mousedown={on.down}
-  on:mousemove={on.move}
+  on:click={() => on.click()}
 >
   <slot />
 </f-barC>
