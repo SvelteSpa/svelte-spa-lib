@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import type { int } from '@spa/typs'
+  import run from '@spa/run'
   import type { Brd } from './index'
   import { clsBrd } from './index'
   import { slide } from 'svelte/transition'
@@ -11,15 +12,24 @@
   export let scrollTop = 0 as int
 
   let el: HTMLDivElement
-  $: show = scrollTop < 20 || (el && el.clientHeight > scrollPad)
+  let show = true
+  $: if (run.inUserScroll()) {
+    if (scrollTop < 20) {
+      show = true
+    } else {
+      if (el.clientHeight < scrollPad) show = false
+    }
+  }
 </script>
 
-{#if show}
-  <div
-    bind:this={el}
-    class={clsBrd('pri', brd) + ' whC'}
-    transition:slide={{ duration: 777 }}
-  >
-    <slot />
-  </div>
-{/if}
+<div
+  bind:this={el}
+  transition:slide={{ duration: 777 }}
+  class={clsBrd('pri', brd) + ' whC'}
+>
+  {#if show}
+    <div transition:slide={{ duration: 777 }}>
+      <slot />
+    </div>
+  {/if}
+</div>

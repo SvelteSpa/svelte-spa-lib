@@ -11,6 +11,33 @@ export let setEnv = (env: any) => {
 export let errMsg = writable('')
 export let bigMsg = writable('')
 
+// attempt to detect if *user* is scrolling
+let inUserScroll = false
+let userScrollTimer: any
+
+let begUserScroll = () => {
+  inUserScroll = true
+}
+
+let endUserScroll = () => {
+  clearTimeout(userScrollTimer)
+  inUserScroll = false
+}
+
+let timUserScroll = () => {
+  begUserScroll()
+  userScrollTimer = setTimeout(endUserScroll, 111)
+}
+
+export let initUserActions = () => {
+  // between down .. up
+  window.onmousedown = begUserScroll
+  window.onmouseup = endUserScroll
+  // a while after
+  window.onmousewheel = timUserScroll
+  window.ontouchmove = timUserScroll
+}
+
 let $ = {
   isDev: false,
   isProd: true,
@@ -43,6 +70,8 @@ let $ = {
   setBigMsg: (msg: str) => bigMsg.set(msg),
   // show system screen: error
   setErrMsg: (msg: str) => errMsg.set(msg),
+
+  inUserScroll: () => inUserScroll,
 }
 
 export default $

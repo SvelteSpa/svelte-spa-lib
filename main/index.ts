@@ -2,7 +2,7 @@
 import arr from '@spa/arr'
 import type { CompData } from '@spa/block'
 import type { MenuEntry, MenuEntriesNul } from '@spa/block/SideMenu.svelte'
-import run, { setEnv } from '@spa/run'
+import run, { setEnv, initUserActions } from '@spa/run'
 import type { int, str, bool, FnVoidUnd } from '@spa/typs'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
@@ -33,16 +33,18 @@ if (window) {
   }
 }
 
-function init(title: str, ver: str) {
+let init = (title: str, ver: str) => {
   setTitle(title, `${title} - ${ver}`)
   $.ver = ver
 
   schema.applyColor(1 as int)
   schema.applySizes(0 as int)
   schema.applyEffects(0 as int)
+
+  initUserActions()
 }
 
-function setTitle(appTitle: str, docTitle: str) {
+let setTitle = (appTitle: str, docTitle: str) => {
   $.title = appTitle
   document.title = docTitle
 }
