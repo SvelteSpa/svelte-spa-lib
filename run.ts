@@ -38,6 +38,11 @@ export let initUserActions = () => {
   window.ontouchmove = timUserScroll
 }
 
+let userSelection = () => {
+  let sel = window.getSelection()
+  return sel ? sel.toString() : ''
+}
+
 let $ = {
   isDev: false,
   isProd: true,
@@ -72,6 +77,7 @@ let $ = {
   setErrMsg: (msg: str) => errMsg.set(msg),
 
   inUserScroll: () => inUserScroll,
+  userSelection,
 }
 
 export default $

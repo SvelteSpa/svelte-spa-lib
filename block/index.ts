@@ -1,3 +1,4 @@
+import run from '@spa/run'
 import type { chr, str, FnVoidUnd } from '@spa/typs'
 import type { SvelteComponent } from 'svelte'
 
@@ -8,21 +9,11 @@ export type Brd = '' | 'r' | 'l'
 export let clsBrd = (head: str, brd: chr) => (brd ? brd + head + 'Brd' : '')
 
 // safe click that allows selection
-export function safeOnClick(onClick: FnVoidUnd) {
+export function notSelClick(onClick: FnVoidUnd) {
   let o = {
     onClick,
-
-    moved: false,
     click: () => {
-      if (o.onClick && !o.moved) o.onClick()
-    },
-
-    down: () => {
-      o.moved = false
-    },
-
-    move: () => {
-      o.moved = true
+      if (o.onClick && !run.userSelection()) o.onClick()
     },
   }
 
