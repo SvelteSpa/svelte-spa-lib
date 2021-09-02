@@ -26,7 +26,7 @@ let endUserScroll = () => {
 
 let timUserScroll = () => {
   begUserScroll()
-  userScrollTimer = setTimeout(endUserScroll, 111)
+  userScrollTimer = setTimeout(endUserScroll, 333)
 }
 
 export let initUserActions = () => {
