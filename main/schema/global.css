@@ -200,6 +200,13 @@ f-ccrC {
   width: 100%;
 }
 
+/* row centered */
+f-rcr {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 /* scrollbars */
 :not(textarea)::-webkit-scrollbar {
   width: var(--scb-wdt);
