@@ -31,11 +31,12 @@ let timUserScroll = () => {
 
 export let initUserActions = () => {
   // between down .. up
-  window.onmousedown = begUserScroll
-  window.onmouseup = endUserScroll
+  let w = window as any // because of .onmousewheel
+  w.onmousedown = begUserScroll
+  w.onmouseup = endUserScroll
   // a while after
-  window.onmousewheel = timUserScroll
-  window.ontouchmove = timUserScroll
+  w.onmousewheel = timUserScroll
+  w.ontouchmove = timUserScroll
 }
 
 let userSelection = () => {

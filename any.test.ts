@@ -1,5 +1,4 @@
 import test from 'ava'
-
 import any from './any'
 
 test('cons', (t) => {
@@ -29,6 +28,9 @@ test('is', (t) => {
   t.false(any.isInt('a'))
   t.false(any.isInt(3.5))
   t.true(any.isInt(3.0))
+
+  t.true(any.isFun(() => {}))
+  t.true(any.isFun((a) => a == a))
 
   t.false(any.isArr(null))
   t.false(any.isArr(undefined))

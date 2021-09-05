@@ -14,6 +14,8 @@ let $ = {
   isNan: (x: any) => Number.isNaN(x),
   isInt: (x: any) => Number.isInteger(x),
 
+  isFun: (x: any) => 'Function' === consName(x),
+
   isArr: (x: any) => 'Array' === consName(x),
   isBol: (x: any) => 'Boolean' === consName(x),
   isObj: (x: any) => 'Object' === consName(x),

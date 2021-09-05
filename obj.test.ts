@@ -85,3 +85,9 @@ test('uni', (t) => {
     obj.uni({ a: 'aa', 2: 'bb' }, { 3: 33, 2: 22 })
   )
 })
+
+test('clear', (t) => {
+  let o = { a: 1, b: 2 }
+  obj.clear(o)
+  t.deepEqual({}, o as {})
+})
