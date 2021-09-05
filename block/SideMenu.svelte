@@ -22,12 +22,9 @@
       <f-bcr>
         <x-icp class="off">{@html ico.left}</x-icp>
       </f-bcr>
-      {#each entries as [tx, fun]}
-        <div
-          class={fun ? 'ptr' : ''}
-          on:click|stopPropagation={() => onClick(fun)}
-        >
-          {$ts(tx)}
+      {#each entries as [tag, fun]}
+        <div on:click|stopPropagation={() => onClick(fun)}>
+          {$ts(tag)}
         </div>
       {/each}
     </main>
@@ -54,10 +51,12 @@
   }
 
   div {
+    cursor: pointer;
     padding: var(--p4);
+    font-weight: bold;
   }
 
-  div.ptr {
-    font-weight: bold;
+  div:hover {
+    text-decoration: underline;
   }
 </style>

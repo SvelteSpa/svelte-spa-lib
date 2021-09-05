@@ -1,6 +1,6 @@
 import type { LangText } from '@spa/lang'
 import run from '@spa/run'
-import type { chr, str, FnVoidUnd } from '@spa/typs'
+import type { chr, str, FnVoid, FnVoidUnd } from '@spa/typs'
 
 // border to separate from other components
 export type Brd = '' | 'r' | 'l'
@@ -21,4 +21,7 @@ export function notSelClick(onClick: FnVoidUnd) {
 }
 
 // side menu
-export type MenuEntry = [tx: LangText, fun: FnVoidUnd]
+export type MenuEntry = [tag: LangText, fun: FnVoid]
+
+// footer items
+export type FooterEntry = [tag: LangText, textOrFun: LangText | FnVoid]

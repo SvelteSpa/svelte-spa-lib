@@ -68,9 +68,9 @@ let $ = {
   onEscape: () => {},
 
   menuEntries,
-  openMenu: (ms: MenuEntry[], onClose: FnVoidUnd) => {
+  openMenu: (entries: MenuEntry[], onClose: FnVoidUnd) => {
     onMenuClose = onClose
-    menuEntries.set(ms)
+    menuEntries.set(entries)
   },
 
   closeMenu: () => {
@@ -81,7 +81,7 @@ let $ = {
 
   modalDlg,
 
-  openModalDlg: (c: CompData, onClose: FnVoidUnd) => {
+  openModalDlg: (c: CompData, onClose: FnVoidUnd = undefined) => {
     onModalClose = onClose
     modalDlg.set(c)
   },
