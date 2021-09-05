@@ -1,6 +1,6 @@
 // do first
 import arr from '@spa/arr'
-import type { MenuEntry, MenuEntriesNul } from '@spa/block/index'
+import type { MenuEntry } from '@spa/block'
 import run, { setEnv, initUserActions } from '@spa/run'
 import type { int, str, bool, FnVoidUnd, CompData } from '@spa/typs'
 import type { Writable } from 'svelte/store'
@@ -49,7 +49,7 @@ let setTitle = (appTitle: str, docTitle: str) => {
 }
 
 // side menu
-let menuEntries = writable(null as MenuEntriesNul)
+let menuEntries = writable([] as MenuEntry[])
 let onMenuClose: FnVoidUnd = undefined
 
 // modal dialog
@@ -74,7 +74,7 @@ let $ = {
   },
 
   closeMenu: () => {
-    menuEntries.set(null)
+    menuEntries.set([])
     if (onMenuClose) onMenuClose()
     onMenuClose = undefined
   },

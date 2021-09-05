@@ -1,14 +1,14 @@
 <script context="module" lang="ts">
   import { fade } from 'svelte/transition'
-  import type { str, FnVoidUnd } from '@spa/typs'
+  import type { FnVoidUnd } from '@spa/typs'
   import ico from '@spa/main/sysicons'
   import main from '@spa/main'
-  import type { MenuEntriesNul } from './index'
+  import { ts } from '@spa/lang'
+  import type { MenuEntry } from './index'
 </script>
 
 <script lang="ts">
-  export let entries: MenuEntriesNul = null
-
+  export let entries: MenuEntry[] = []
   function onClick(fun: FnVoidUnd = undefined) {
     // close and call
     main.closeMenu()
@@ -16,7 +16,7 @@
   }
 </script>
 
-{#if entries}
+{#if entries.length}
   <x-curtain on:click={() => onClick()} transition:fade={{ duration: 100 }}>
     <main on:click={() => onClick()}>
       <f-bcr>
@@ -27,7 +27,7 @@
           class={fun ? 'ptr' : ''}
           on:click|stopPropagation={() => onClick(fun)}
         >
-          {tx}
+          {$ts(tx)}
         </div>
       {/each}
     </main>

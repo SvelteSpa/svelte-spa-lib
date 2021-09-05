@@ -1,3 +1,4 @@
+import type { LangText } from '@spa/lang'
 import run from '@spa/run'
 import type { chr, str, FnVoidUnd } from '@spa/typs'
 
@@ -20,5 +21,4 @@ export function notSelClick(onClick: FnVoidUnd) {
 }
 
 // side menu
-export type MenuEntry = [tx: str, fun: FnVoidUnd]
-export type MenuEntriesNul = MenuEntry[] | null
+export type MenuEntry = [tx: LangText, fun: FnVoidUnd]

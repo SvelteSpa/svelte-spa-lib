@@ -7,7 +7,7 @@
 
   import ModalDlg from '@spa/block/ModalDlg.svelte'
 
-  import type { MenuEntry } from '@spa/block/index'
+  import type { MenuEntry } from '@spa/block'
   import SideMenu from '@spa/block/SideMenu.svelte'
 </script>
 
@@ -16,7 +16,7 @@
   let h = 0
   $: ctx.upd(w as int, h as int)
 
-  let menuEntries: MenuEntry[] | null = null
+  let menuEntries: MenuEntry[]
   main.menuEntries.subscribe((_) => (menuEntries = _))
 
   let modalDlg: CompData | null = null
