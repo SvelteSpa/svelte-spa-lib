@@ -1,12 +1,9 @@
 <script context="module" lang="ts">
+  import { fade } from 'svelte/transition'
   import type { str, FnVoidUnd } from '@spa/typs'
   import ico from '@spa/main/sysicons'
   import main from '@spa/main'
-
-  export type MenuEntry = [tx: str, fun: FnVoidUnd]
-  export type MenuEntriesNul = MenuEntry[] | null
-
-  import { fade } from 'svelte/transition'
+  import type { MenuEntriesNul } from './index'
 </script>
 
 <script lang="ts">

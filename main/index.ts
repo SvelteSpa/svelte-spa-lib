@@ -1,6 +1,6 @@
 // do first
 import arr from '@spa/arr'
-import type { MenuEntry, MenuEntriesNul } from '@spa/block/SideMenu.svelte'
+import type { MenuEntry, MenuEntriesNul } from '@spa/block/index'
 import run, { setEnv, initUserActions } from '@spa/run'
 import type { int, str, bool, FnVoidUnd, CompData } from '@spa/typs'
 import type { Writable } from 'svelte/store'

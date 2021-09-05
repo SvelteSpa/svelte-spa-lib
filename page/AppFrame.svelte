@@ -7,7 +7,7 @@
 
   import ModalDlg from '@spa/block/ModalDlg.svelte'
 
-  import type { MenuEntry } from '@spa/block/SideMenu.svelte'
+  import type { MenuEntry } from '@spa/block/index'
   import SideMenu from '@spa/block/SideMenu.svelte'
 </script>
 

@@ -18,3 +18,7 @@ export function notSelClick(onClick: FnVoidUnd) {
 
   return o
 }
+
+// side menu
+export type MenuEntry = [tx: str, fun: FnVoidUnd]
+export type MenuEntriesNul = MenuEntry[] | null
