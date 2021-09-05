@@ -2,7 +2,12 @@
 import type { str } from '@spa/typs'
 
 // split a string by separator, optionally trim and throw out empty strings
-export let split = (s: str, sep: str, trim = true, withEmpties = false) =>
+export let split = (
+  s: str,
+  sep: str = '\n',
+  trim = true,
+  withEmpties = false
+) =>
   s
     .split(sep)
     .map((_) => (trim ? _.trim() : _))

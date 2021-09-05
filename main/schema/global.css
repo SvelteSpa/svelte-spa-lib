@@ -192,6 +192,13 @@ f-ccr {
   justify-content: center;
 }
 
+/* column centered top */
+f-cct {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
 f-ccrC {
   display: flex;
   flex-flow: column wrap;

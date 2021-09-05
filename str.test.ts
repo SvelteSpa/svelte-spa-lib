@@ -9,6 +9,7 @@ test('split', (t) => {
   t.deepEqual([' ', ' a ', ' '], str.split(' / a / ', '/', false, true))
   t.deepEqual(['a'], str.split(' / a / ', '/', true, false))
   t.deepEqual([' a '], str.split(' / a / ', '/', false, false))
+  t.deepEqual(['a', 'b', 'c'], str.split('a\nb\nc'))
 })
 
 test('utf', (t) => {
