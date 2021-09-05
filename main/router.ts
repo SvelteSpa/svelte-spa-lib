@@ -1,3 +1,4 @@
+import main from '@spa/main'
 import { split } from '@spa/str'
 import type { str } from '@spa/typs'
 import { tick } from 'svelte'
@@ -85,6 +86,7 @@ let stopPar = (stop: RouteStop): str => stop[1] || ''
 export type Cb = (head: str) => void
 let subscribe = (cb: Cb) => {
   curRoute.subscribe((_) => {
+    main.closeModalDlg()
     cb(stopHead(firstStop()))
   })
 }
