@@ -44,6 +44,8 @@ let codes = {
 'github': 59398,
 'home1': 59422,
 'home0': 59423,
+'clip0': 59435,
+'clip1': 59436,
 }
 
 export default codes

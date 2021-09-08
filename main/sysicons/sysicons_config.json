@@ -275,6 +275,18 @@
       "css": "home0",
       "code": 59423,
       "src": "typicons"
+    },
+    {
+      "uid": "6310fc4804f3ffaebc4436ee30f3856e",
+      "css": "clip0",
+      "code": 59435,
+      "src": "typicons"
+    },
+    {
+      "uid": "0f81c70dd389bf78f46387b794f2573f",
+      "css": "clip1",
+      "code": 59436,
+      "src": "typicons"
     }
   ]
 }
