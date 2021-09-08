@@ -7,7 +7,7 @@
   export let msg: any
   export let onClose = () => {}
 
-  $: if (msg) fun.delay(onClose, ll(3000))
+  $: if (msg) fun.debounce(onClose, 1777)()
 </script>
 
 {#if msg}
