@@ -53,7 +53,7 @@
     fill: var(--btn-bg);
     width: 1.2em;
     padding: var(--p2);
-    font-size: 160%;
+    font-size: 180%;
   }
 
   svg:hover {
