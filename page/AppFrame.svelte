@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import type { int, CompData } from '@spa/typs'
-  import { bigMsg, errMsg } from '@spa/run'
+  import { usrMsg, bigMsg, errMsg } from '@spa/run'
   import { t } from '@spa/lang'
   import main from '@spa/main'
   import ctx from '@spa/ctx'
@@ -9,6 +9,7 @@
 
   import type { MenuEntry } from '@spa/block'
   import SideMenu from '@spa/block/SideMenu.svelte'
+  import Usr from './Usr.svelte'
 </script>
 
 <script lang="ts">
@@ -23,20 +24,20 @@
   main.modalDlg.subscribe((_) => (modalDlg = _))
 </script>
 
-{#if $bigMsg}
-  <x-sysScr>
-    <div>{@html $bigMsg}</div>
-    <p>
-      <button on:click={() => main.reloadUrl()}>OK</button>
-    </p>
-  </x-sysScr>
-{:else if $errMsg}
+{#if $errMsg}
   <x-sysScr>
     <img class="sm" alt="" src={main.urlSysAssets('error.png')} />
     <div>[ {@html $errMsg} ]</div>
     <div>
       {@html $t.errMsg}
     </div>
+    <p>
+      <button on:click={() => main.reloadUrl()}>OK</button>
+    </p>
+  </x-sysScr>
+{:else if $bigMsg}
+  <x-sysScr>
+    <div>{@html $bigMsg}</div>
     <p>
       <button on:click={() => main.reloadUrl()}>OK</button>
     </p>
@@ -48,6 +49,7 @@
 
   <ModalDlg comp={modalDlg} />
   <SideMenu entries={menuEntries} />
+  <Usr msg={$usrMsg} onClose={() => usrMsg.set('')} />
 {/if}
 
 <style>

@@ -10,6 +10,7 @@ export let setEnv = (env: any) => {
 
 export let errMsg = writable('')
 export let bigMsg = writable('')
+export let usrMsg = writable('')
 
 // attempt to detect if *user* is scrolling
 let inUserScroll = false
@@ -76,6 +77,8 @@ let $ = {
   setBigMsg: (msg: str) => bigMsg.set(msg),
   // show system screen: error
   setErrMsg: (msg: str) => errMsg.set(msg),
+  // show user message
+  setUsrMsg: (msg: str) => usrMsg.set(msg),
 
   inUserScroll: () => inUserScroll,
   userSelection,
