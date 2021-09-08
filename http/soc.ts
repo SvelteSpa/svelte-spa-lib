@@ -1,7 +1,7 @@
 import type { str } from '@spa/typs'
 
 // let link = (url: str, route: any) => encodeURIComponent(`${url}/#/${route}`)
-let link = (url: str) => url //encodeURIComponent(url)
+let link = (url: str) => encodeURIComponent(url)
 
 let $ = {
   fbLink: (url: str) =>
