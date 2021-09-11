@@ -20,11 +20,11 @@ type Dict = Map<Key, LangText>
 
 let dict: Dict
 
-function selText(ts: LangText): str {
+function selText(ts: LangText, withDef): str {
   let t: any
   any.isStr((t = ts)) ||
     any.isDef((t = ts[curLangIndex])) ||
-    any.isDef((t = ts[0])) ||
+    (withDef && any.isDef((t = ts[0]))) ||
     (t = '')
 
   return t
@@ -47,7 +47,7 @@ export const textProxy = new Proxy(
 
 // non-reactive
 export let l: { [key: string]: str } = textProxy
-export let ls = (ts: LangText) => selText(ts)
+export let ls = (ts: LangText, withDef = true) => selText(ts, withDef)
 
 // reactive
 export let t = derived([curLang], (_) => {
@@ -55,7 +55,7 @@ export let t = derived([curLang], (_) => {
 })
 
 export let ts = derived([curLang], (_) => {
-  return (ts: LangText) => selText(ts)
+  return (ts: LangText) => selText(ts, true)
 })
 
 //---------------------------------------------
