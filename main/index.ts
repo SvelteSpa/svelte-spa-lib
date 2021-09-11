@@ -53,10 +53,16 @@ let menuEntries = writable([] as MenuEntry[])
 let onMenuClose: FnVoidUnd = undefined
 
 // modal dialog
-let modalDlg = writable(null as CompData | null)
+export type ModalData = [CompData, bool]
+let modalDlg = writable(null as ModalData | null)
 let onModalClose: FnVoidUnd = undefined
 
 let busy: Writable<any> = writable(null)
+
+let openModalDlg = (c: CompData, pad: bool, onClose: FnVoidUnd) => {
+  onModalClose = onClose
+  modalDlg.set([c, pad])
+}
 
 let $ = {
   init,
@@ -81,10 +87,11 @@ let $ = {
 
   modalDlg,
 
-  openModalDlg: (c: CompData, onClose: FnVoidUnd = undefined) => {
-    onModalClose = onClose
-    modalDlg.set(c)
-  },
+  openModalDlg: (c: CompData, onClose: FnVoidUnd = undefined) =>
+    openModalDlg(c, true, onClose),
+
+  openModalDlgPlain: (c: CompData, onClose: FnVoidUnd = undefined) =>
+    openModalDlg(c, false, onClose),
 
   closeModalDlg: () => {
     modalDlg.set(null)

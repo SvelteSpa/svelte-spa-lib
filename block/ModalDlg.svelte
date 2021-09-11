@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import type { CompData } from '@spa/typs'
+  import type { ModalData } from '@spa/main'
   import ctx from '@spa/ctx'
   import main from '@spa/main'
 
@@ -7,9 +7,9 @@
 </script>
 
 <script lang="ts">
-  export let comp: CompData | null
+  export let dlg: ModalData | null
 
-  $: [c, ps] = comp || []
+  $: [[c, ps], pad] = dlg || [[], true]
 
   let wh = ctx.get().wh
   $: [w, h] = $wh
@@ -27,7 +27,7 @@
 
 {#if c}
   <x-curtain on:click={close} transition:fade={{ duration: 100 }}>
-    <main on:click|stopPropagation={() => {}}>
+    <main class:pad on:click|stopPropagation={() => {}}>
       <div bind:this={el}>
         <svelte:component this={c} {...ps} />
       </div>
@@ -47,13 +47,11 @@
 <style>
   svg {
     position: absolute;
-    top: -0.6em;
-    right: -0.6em;
+    top: -1em;
+    right: -1em;
     stroke: white;
     fill: var(--btn-bg);
-    width: 1.2em;
-    padding: var(--p2);
-    font-size: 180%;
+    width: 2em;
   }
 
   svg:hover {
@@ -64,12 +62,20 @@
     position: relative;
     color: var(--pri-fg);
     background: var(--pri-bg);
-    padding: var(--p2);
     border: thin solid var(--x-box);
+  }
+
+  main.pad {
+    padding: var(--p2);
     border-radius: var(--p4);
   }
 
-  div {
+  main div {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  main.pad div {
     padding: var(--p2) var(--p4);
     overflow: auto;
   }

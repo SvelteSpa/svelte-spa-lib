@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
-  import type { int, CompData } from '@spa/typs'
+  import type { int } from '@spa/typs'
+  import type { ModalData } from '@spa/main'
   import { usrMsg, bigMsg, errMsg } from '@spa/run'
   import { t } from '@spa/lang'
   import main from '@spa/main'
@@ -20,7 +21,7 @@
   let menuEntries: MenuEntry[]
   main.menuEntries.subscribe((_) => (menuEntries = _))
 
-  let modalDlg: CompData | null = null
+  let modalDlg: ModalData | null = null
   main.modalDlg.subscribe((_) => (modalDlg = _))
 </script>
 
@@ -47,7 +48,7 @@
     <slot />
   </div>
 
-  <ModalDlg comp={modalDlg} />
+  <ModalDlg dlg={modalDlg} />
   <SideMenu entries={menuEntries} />
   <Usr msg={$usrMsg} onClose={() => usrMsg.set('')} />
 {/if}
