@@ -1,8 +1,7 @@
 <script context="module" lang="ts">
-  import type { int } from '@spa/typs'
   import run from '@spa/run'
-  import type { Brd } from './index'
-  import { clsBrd } from './index'
+  import type { Brd } from '.'
+  import { clsBrd } from '.'
   import { slide } from 'svelte/transition'
 </script>
 

@@ -1,5 +1,3 @@
-import type { num, str, bool } from '@spa/typs'
-
 export type Assertable = bool | str | num
 
 export default function assert(

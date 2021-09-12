@@ -1,6 +1,7 @@
+import '@spa/init'
 import test from 'ava'
-import rad, { Rad } from './rad'
 import num from './num'
+import rad, { Rad } from './rad'
 
 test('Rad', (t) => {
   let tt = t.true
@@ -42,5 +43,3 @@ test('Rad', (t) => {
   eq(Math.PI / 2, Rad.asin(1))
   t.deepEqual(num(1), rad(Math.PI / 2).sin())
 })
-
-// eof

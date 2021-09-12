@@ -1,7 +1,4 @@
-import any from '@spa/any'
-import obj from '@spa/obj'
 import run from '@spa/run'
-import type { num, str } from '@spa/typs'
 import type { Writable } from 'svelte/store'
 import { writable, derived, get } from 'svelte/store'
 
@@ -20,11 +17,11 @@ type Dict = Map<Key, LangText>
 
 let dict: Dict
 
-function selText(ts: LangText, withDef): str {
+function selText(ts: LangText, withDef = true): str {
   let t: any
-  any.isStr((t = ts)) ||
-    any.isDef((t = ts[curLangIndex])) ||
-    (withDef && any.isDef((t = ts[0]))) ||
+  ;(t = ts).isStr() ||
+    undefined !== (t = ts[curLangIndex]) ||
+    (withDef && undefined !== (t = ts[0])) ||
     (t = '')
 
   return t
@@ -32,7 +29,11 @@ function selText(ts: LangText, withDef): str {
 
 function lookupText(key: Key) {
   let val = dict.get(key)
-  return any.isUdf(val) ? (run.isDev ? '((?))' : '') : selText(val as LangText)
+  return undefined === val
+    ? run.isDev
+      ? '((?))'
+      : ''
+    : selText(val as LangText)
 }
 
 export const textProxy = new Proxy(
@@ -55,7 +56,7 @@ export let t = derived([curLang], (_) => {
 })
 
 export let ts = derived([curLang], (_) => {
-  return (ts: LangText) => selText(ts, true)
+  return (ts: LangText) => selText(ts)
 })
 
 //---------------------------------------------
@@ -68,7 +69,7 @@ function signal(l?: Lang) {
 
 function setAvailLangs(ls: Langs) {
   dict = new Map()
-  availLangs = any.clone(ls)
+  availLangs = ls.clone()
   setCurLang(availLangs[0] || '')
 }
 
@@ -80,17 +81,16 @@ function setCurLang(lang: Lang) {
 }
 
 function addText(key: Key, val: LangText, refresh = true) {
-  dict.set(key, any.clone(val))
+  dict.set(key, val.clone())
   if (refresh) signal()
 }
 
 type DictArr = [Key, LangText][]
-type DictObj = { [key: str]: LangText }
+type DictObj = { [key: string]: LangText }
 
 function addDict(data: DictArr | DictObj, refresh = true) {
-  if (any.isArr(data))
-    (data as DictArr).forEach(([k, v]) => addText(k, v, false))
-  else obj.each(data as DictObj, (v, k) => addText(k, v, false))
+  if (data.isArr()) (data as DictArr).forEach(([k, v]) => addText(k, v, false))
+  else (data as DictObj).each((v, k) => addText(k, v, false))
   if (refresh) signal()
 }
 
@@ -105,8 +105,5 @@ let $ = {
   addText,
   addDict,
 }
-
-// init
-setAvailLangs([])
 
 export default $

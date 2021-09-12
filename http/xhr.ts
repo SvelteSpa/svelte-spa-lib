@@ -1,7 +1,5 @@
-import fun from '@spa/fun'
 import app from '@spa/main'
 import run from '@spa/run'
-import type { num, str, bool } from '@spa/typs'
 
 export type ThenFun = (res: any) => void
 export type FailFun = (code: num, tx: str) => void

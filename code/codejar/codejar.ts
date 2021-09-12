@@ -1,5 +1,3 @@
-import type { int } from '@spa/typs'
-
 const globalWindow = window
 
 type Options = {

@@ -1,6 +1,3 @@
-import obj from '@spa/obj'
-import type { str, int } from '@spa/typs'
-
 type CssVars = {}
 type Schema = { name?: str; color?: str; vs: CssVars }
 

@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-  import type { num, str, FnVoidUnd } from '@spa/typs'
 </script>
 
 <script lang="ts">

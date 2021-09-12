@@ -1,7 +1,5 @@
 import ra from '@spa/geom/ra'
 import xy from '@spa/geom/xy'
-import obj from '@spa/obj'
-import type { str } from '@spa/typs'
 
 const NS = 'http://www.w3.org/2000/svg'
 

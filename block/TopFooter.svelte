@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
   import ctx from '@spa/ctx'
   import ico from '@spa/main/sysicons'
-  import type { Brd } from './index'
+  import type { Brd } from '.'
   import BarC from './BarC.svelte'
 </script>
 

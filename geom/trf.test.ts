@@ -1,3 +1,4 @@
+import '@spa/init'
 import test from 'ava'
 import trf, { Trf } from './trf'
 import xy, { XY } from './xy'
@@ -41,5 +42,3 @@ test('Trf', (t) => {
     )
   )
 })
-
-// eof

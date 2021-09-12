@@ -1,3 +1,4 @@
+import '@spa/init'
 import { Num } from '@spa/num/num'
 import test from 'ava'
 import { RA } from './ra'
@@ -66,5 +67,3 @@ test('XY', (t) => {
     tt(XY.fromWH(o).eq(xy(2, 3)))
   }
 })
-
-// eof

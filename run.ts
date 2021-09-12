@@ -1,6 +1,5 @@
 import type { Assertable } from '@spa/assert'
 import assert from '@spa/assert'
-import type { str } from '@spa/typs'
 import { writable } from 'svelte/store'
 
 export let setEnv = (env: any) => {

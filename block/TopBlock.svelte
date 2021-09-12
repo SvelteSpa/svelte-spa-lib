@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
-  import type { int } from '@spa/typs'
   import ctx from '@spa/ctx'
-  import type { Brd } from './index'
+  import type { Brd } from '.'
   import TopHeader from './TopHeader.svelte'
   import TopBanner from './TopBanner.svelte'
   import TopNav from './TopNav.svelte'

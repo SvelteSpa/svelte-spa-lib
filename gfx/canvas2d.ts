@@ -1,6 +1,3 @@
-import arr from '@spa/arr'
-import type { num, str } from '@spa/typs'
-
 type WH = { w: num; h: num }
 
 class Canvas2D {

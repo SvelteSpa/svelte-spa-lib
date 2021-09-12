@@ -1,9 +1,7 @@
 <script context="module" lang="ts">
-  import type { str, int } from '@spa/typs'
   import { onMount } from 'svelte'
   import { CodeJar } from './codejar/codejar'
   import type { Position } from './codejar/codejar'
-  // import { withLineNumbers } from './codejar/linenumbers'
   export type Pos = [s: int, e: int]
   export type Set = (tx: str, p?: Pos) => void
   export type SetPos = (p?: Pos) => void

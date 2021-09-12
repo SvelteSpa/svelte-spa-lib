@@ -1,7 +1,6 @@
 <script context="module" lang="ts">
-  import type { int } from '@spa/typs'
-  import type { Brd } from './index'
-  import { clsBrd } from './index'
+  import type { Brd } from '.'
+  import { clsBrd } from '.'
 </script>
 
 <script lang="ts">

@@ -1,8 +1,8 @@
 // do first
 import arr from '@spa/arr'
 import type { MenuEntry } from '@spa/block'
+import type { CompData } from '@spa/comp'
 import run, { setEnv, initUserActions } from '@spa/run'
-import type { int, str, bool, FnVoidUnd, CompData } from '@spa/typs'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 import schema from './schema'

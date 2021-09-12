@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-  import type { int } from '@spa/typs'
   import type { ModalData } from '@spa/main'
   import { usrMsg, bigMsg, errMsg } from '@spa/run'
   import { t } from '@spa/lang'

@@ -1,7 +1,6 @@
 import { Num } from './num'
-import { Rad } from './rad'
-
 import type { NN } from './num'
+import { Rad } from './rad'
 
 export const deg = (v: any = undefined) => Deg.$(v)
 export default deg
@@ -43,5 +42,3 @@ export class Deg extends Num {
     return Rad.atan(n.valueOf()).toDeg()
   }
 }
-
-// eof

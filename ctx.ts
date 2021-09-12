@@ -1,7 +1,5 @@
 // Context - parent-child blocks
 import layout from '@spa/block/layout'
-import obj from '@spa/obj'
-import type { int, str, bool } from '@spa/typs'
 import { getContext, setContext } from 'svelte'
 import type { Writable, Readable } from 'svelte/store'
 import { writable, derived } from 'svelte/store'

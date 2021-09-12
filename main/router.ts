@@ -1,6 +1,4 @@
 import main from '@spa/main'
-import { split } from '@spa/str'
-import type { str } from '@spa/typs'
 import { tick } from 'svelte'
 import { readable, get } from 'svelte/store'
 import type { Readable } from 'svelte/store'

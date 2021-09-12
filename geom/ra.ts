@@ -76,5 +76,3 @@ export class RA {
     )
   }
 }
-
-// eof

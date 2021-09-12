@@ -1,3 +1,4 @@
+import '@spa/init'
 import num from '@spa/num/num'
 import test from 'ava'
 import ra, { RA } from './ra'
@@ -35,5 +36,3 @@ test('XY', (t) => {
 
   tt(RA.fromArray([2, 3]).eq(ra(2, 3)))
 })
-
-// eof

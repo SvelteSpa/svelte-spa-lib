@@ -1,3 +1,4 @@
+import '@spa/init'
 import test from 'ava'
 import num, { Num } from './num'
 
@@ -140,5 +141,3 @@ test('Num', (t) => {
   eq(13.5, num(1).scale(0, 2, 10, 17))
   eq(2, num(13.5).scale(10, 17, 0, 4))
 })
-
-// eof

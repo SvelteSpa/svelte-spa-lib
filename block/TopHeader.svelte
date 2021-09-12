@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import type { Brd } from './index'
+  import type { Brd } from '.'
   import BarC from './BarC.svelte'
 </script>
 

@@ -1,3 +1,4 @@
+import '@spa/init'
 import test from 'ava'
 import deg, { Deg } from './deg'
 import num from './num'
@@ -42,5 +43,3 @@ test('Deg', (t) => {
   eq(90, Deg.asin(1))
   t.deepEqual(num(1), deg(90).sin())
 })
-
-// eof

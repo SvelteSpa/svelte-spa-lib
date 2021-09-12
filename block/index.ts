@@ -1,6 +1,5 @@
 import type { LangText } from '@spa/lang'
 import run from '@spa/run'
-import type { chr, str, FnVoid, FnVoidUnd } from '@spa/typs'
 
 // border to separate from other components
 export type Brd = '' | 'r' | 'l'

@@ -146,5 +146,3 @@ export class XY {
     return ra(r, a)
   }
 }
-
-// eof

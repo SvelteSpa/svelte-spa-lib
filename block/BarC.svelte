@@ -1,8 +1,7 @@
 <script context="module" lang="ts">
-  import type { FnVoidUnd } from '@spa/typs'
-  import type { Brd } from './index'
-  import { clsBrd } from './index'
-  import { notSelClick } from './index'
+  import type { Brd } from '.'
+  import { clsBrd } from '.'
+  import { notSelClick } from '.'
 </script>
 
 <script lang="ts">

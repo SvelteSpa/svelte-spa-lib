@@ -1,3 +1,4 @@
+import '@spa/init'
 import test from 'ava'
 import run from './run'
 

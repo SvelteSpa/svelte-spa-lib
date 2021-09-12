@@ -45,5 +45,3 @@ export class Trf {
     return trf(this.tr.add(o.tr), this.sc.add(o.sc))
   }
 }
-
-// eof

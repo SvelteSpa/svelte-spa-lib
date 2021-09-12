@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-  import type { num } from '@spa/typs'
   import { onMount } from 'svelte'
   import Canvas2d from './canvas2d'
 </script>

@@ -1,5 +1,6 @@
+import num from '.'
+import '@spa/init'
 import test from 'ava'
-import num from './index'
 
 test('num', (t) => {
   t.is(10, num.toInt('10'))

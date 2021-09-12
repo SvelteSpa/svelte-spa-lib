@@ -224,5 +224,3 @@ export class Num extends Number {
     return Num.$(Math.random()).fromScale(lo, hi)
   }
 }
-
-// eof

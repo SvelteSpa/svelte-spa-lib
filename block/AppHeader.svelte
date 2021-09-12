@@ -1,5 +1,4 @@
 <script context="module" lang="ts">
-  import type { str, bool, FnVoid } from '@spa/typs'
   import ctx from '@spa/ctx'
   import ico from '@spa/main/sysicons'
   import lang, { t } from '@spa/lang'

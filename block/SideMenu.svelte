@@ -1,10 +1,9 @@
 <script context="module" lang="ts">
   import { fade } from 'svelte/transition'
-  import type { FnVoidUnd } from '@spa/typs'
   import ico from '@spa/main/sysicons'
   import main from '@spa/main'
   import { ts } from '@spa/lang'
-  import type { MenuEntry } from './index'
+  import type { MenuEntry } from '.'
 </script>
 
 <script lang="ts">

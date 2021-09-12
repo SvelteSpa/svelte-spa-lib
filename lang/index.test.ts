@@ -1,4 +1,5 @@
 import lang, { l, ls, t as lt, ts as lts } from '.'
+import '@spa/init'
 import test from 'ava'
 import { get } from 'svelte/store'
 

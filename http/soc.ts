@@ -1,5 +1,3 @@
-import type { str } from '@spa/typs'
-
 // let link = (url: str, route: any) => encodeURIComponent(`${url}/#/${route}`)
 let link = (url: str) => encodeURIComponent(url)
 
