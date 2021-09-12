@@ -3,7 +3,7 @@ import test from 'ava'
 import './obj'
 
 test('obj', (t) => {
-  t.is(2, { a: 1, b: 2 }.size())
+  t.is(2, { a: 1, b: 2 }.sz())
 })
 
 test('each', (t) => {
@@ -54,14 +54,14 @@ test('find', (t) => {
   t.true('c' == find((v: any) => 3 == v))
 })
 
-test('size', (t) => {
-  t.is(0, [].size())
-  t.is(0, ''.size())
-  t.is(0, {}.size())
+test('sz', (t) => {
+  t.is(0, [].sz())
+  t.is(0, ''.sz())
+  t.is(0, {}.sz())
 
-  t.is(1, [null].size())
-  t.is(1, ' '.size())
-  t.is(1, { a: 9 }.size())
+  t.is(1, [null].sz())
+  t.is(1, ' '.sz())
+  t.is(1, { a: 9 }.sz())
 })
 
 test('keys', (t) => {

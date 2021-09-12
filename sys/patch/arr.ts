@@ -11,7 +11,7 @@ declare global {
   }
 
   interface Array<T> {
-    size(): int
+    sz(): int
     find(fun: FindFun<T>): Ind | false
     each(fun: EachFun<T>): Self
     last(): T | undefined
@@ -25,7 +25,7 @@ Array.iota = function (n: int, mapFun?: (i: int) => any) {
 
 let $$ = Array.prototype
 
-$$.size = function (): int {
+$$.sz = function (): int {
   return this.length
 }
 

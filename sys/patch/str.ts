@@ -2,7 +2,7 @@ export {}
 
 declare global {
   interface String {
-    size(): int
+    sz(): int
     last(): chr | undefined
     butLast(): chr | undefined
     // split a string by separator, optionally trim and throw out empty strings
@@ -12,7 +12,7 @@ declare global {
 
 let $$ = String.prototype
 
-$$.size = function (): int {
+$$.sz = function (): int {
   return this.length
 }
 

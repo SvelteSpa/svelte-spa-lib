@@ -9,7 +9,7 @@ type EachFun = (v: Val, k: Key, o: {}) => bool | void
 declare global {
   interface Object {
     clear(): void
-    size(): int
+    sz(): int
     keys(): Key[]
     vals(): Val[]
     find(fun: FindFun): Key | false
@@ -38,7 +38,7 @@ $$.clear = function (): void {
   this.keys().forEach((key: Key) => delete this[key])
 }
 
-$$.size = function (): int {
+$$.sz = function (): int {
   return this.keys().length
 }
 
