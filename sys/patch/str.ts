@@ -6,7 +6,7 @@ declare global {
     last(): chr | undefined
     butLast(): chr | undefined
     // split a string by separator, optionally trim and throw out empty strings
-    xsplit(sep?: str, trim?: bool, withEmpties?: bool)
+    xsplit(sep?: str, trim?: bool, withEmpties?: bool): str[]
   }
 }
 
@@ -28,7 +28,8 @@ $$.butLast = function () {
 }
 
 $$.xsplit = function (sep: str = '\n', trim = true, withEmpties = false) {
-  return this.split(sep)
+  return (this as str)
+    .split(sep)
     .map((_) => (trim ? _.trim() : _))
     .filter((_) => withEmpties || _.trim())
 }

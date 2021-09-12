@@ -16,9 +16,10 @@ let encodeRoute = (route: Route): str =>
 let decodeRoute = (route: str): Route => {
   let hashPos = route.indexOf('#/')
   return 0 <= hashPos
-    ? split(route.substr(hashPos + 1), '/').map((_) =>
-        split(_, ':').map((_) => decode(_))
-      )
+    ? route
+        .substr(hashPos + 1)
+        .xsplit('/')
+        .map((_) => _.xsplit(':').map((_) => decode(_)))
     : []
 }
 

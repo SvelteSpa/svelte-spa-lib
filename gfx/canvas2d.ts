@@ -94,7 +94,7 @@ class Canvas2D {
   path(p: [x: num, y: num][], fill = false) {
     this.beg()
     let t = this
-    arr.each(p, ([x, y], i) => (i ? t.to(x, y) : t.move(x, y)))
+    p.each(([x, y], i) => (i ? t.to(x, y) : t.move(x, y)))
     this.end(fill)
     return this
   }

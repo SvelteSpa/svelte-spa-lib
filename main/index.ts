@@ -1,5 +1,4 @@
 // do first
-import arr from '@spa/arr'
 import type { MenuEntry } from '@spa/block'
 import type { CompData } from '@spa/comp'
 import run, { setEnv, initUserActions } from '@spa/run'
@@ -18,7 +17,7 @@ if (window) {
   // a handy tracing shortcut
   w.ll = (...args: any[]) => {
     if (run.isDev) console.log(...args)
-    return arr.last(args)
+    return args.last()
   }
 
   // handle escape key

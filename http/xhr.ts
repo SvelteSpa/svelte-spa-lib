@@ -100,9 +100,9 @@ export class Xhr {
     isBusy = true
 
     clearTimeout(busyReportTimeout)
-    busyReportTimeout = fun.delay(() => {
+    busyReportTimeout = (() => {
       this._busyFun((busyReported = true))
-    }, _ms)
+    }).delay(_ms)
 
     return true
   }
@@ -112,13 +112,10 @@ export class Xhr {
     if (!run.sysChk(isBusy, () => 'xhr not busy')) return
 
     clearTimeout(busyReportTimeout)
-    busyReportTimeout = fun.delay(
-      // how fast to un-report
-      () => {
-        this._busyFun((busyReported = false))
-      },
-      busyReported ? _ms : 0
-    )
+    busyReportTimeout = // how fast to un-report
+    (() => {
+      this._busyFun((busyReported = false))
+    }).delay(busyReported ? _ms : 0)
 
     isBusy = false
   }

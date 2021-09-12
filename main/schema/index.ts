@@ -136,7 +136,7 @@ function setCssVar(k: str, v: str) {
 
 function applyCssVars(vs: CssVars) {
   let style = (document as any).querySelector(':root').style
-  obj.each(vs, (v, k) => style.setProperty('--' + k, v))
+  vs.each((v, k) => style.setProperty('--' + k, v))
 }
 
 function applySchema(s: Schema[], n: int) {

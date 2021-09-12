@@ -32,7 +32,7 @@ class Node extends SVGElement {
   }
 
   attrs(as: {}) {
-    obj.eachOwn(as, (v, k) => this.attr(k, v))
+    as.each((v, k) => this.attr(k, v))
     return this
   }
 

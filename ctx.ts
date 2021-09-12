@@ -26,7 +26,7 @@ let make = (debugTag: str): CompCtx => ({
 
 // new (combined) context
 let set = (debugTag: str): CompCtx => {
-  let ctx = obj.uni($.get(), make(debugTag)) as CompCtx
+  let ctx = $.get().union(make(debugTag)) as CompCtx
   setContext(compCtxKey, ctx)
   return ctx
 }
