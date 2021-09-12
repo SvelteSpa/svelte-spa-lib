@@ -2,7 +2,7 @@ import { Deg } from './deg'
 import { Num } from './num'
 import type { NN } from './num'
 
-export const rad = (v: any = undefined) => Rad.$(v)
+export const rad = (v?: any) => Rad.$(v)
 export default rad
 
 export class Rad extends Num {

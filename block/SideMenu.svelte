@@ -8,7 +8,7 @@
 
 <script lang="ts">
   export let entries: MenuEntry[] = []
-  function onClick(fun: FnVoidUnd = undefined) {
+  function onClick(fun?: FnVoidUnd) {
     // close and call
     main.closeMenu()
     if (fun) fun()

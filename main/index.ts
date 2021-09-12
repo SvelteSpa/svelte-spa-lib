@@ -49,12 +49,12 @@ let setTitle = (appTitle: str, docTitle: str) => {
 
 // side menu
 let menuEntries = writable([] as MenuEntry[])
-let onMenuClose: FnVoidUnd = undefined
+let onMenuClose: FnVoidUnd
 
 // modal dialog
 export type ModalData = [CompData, bool]
 let modalDlg = writable(null as ModalData | null)
-let onModalClose: FnVoidUnd = undefined
+let onModalClose: FnVoidUnd
 
 let busy: Writable<any> = writable(null)
 
@@ -86,10 +86,10 @@ let $ = {
 
   modalDlg,
 
-  openModalDlg: (c: CompData, onClose: FnVoidUnd = undefined) =>
+  openModalDlg: (c: CompData, onClose?: FnVoidUnd) =>
     openModalDlg(c, true, onClose),
 
-  openModalDlgPlain: (c: CompData, onClose: FnVoidUnd = undefined) =>
+  openModalDlgPlain: (c: CompData, onClose?: FnVoidUnd) =>
     openModalDlg(c, false, onClose),
 
   closeModalDlg: () => {

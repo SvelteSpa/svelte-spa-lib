@@ -9,22 +9,21 @@ type Position = {
  */
 export function cursorPosition(toStart = true): Position | undefined {
   const s = window.getSelection()!
-  if (s.rangeCount > 0) {
-    const cursor = document.createElement("span")
-    cursor.textContent = "|"
+  if (s.rangeCount <= 0) return
 
-    const r = s.getRangeAt(0).cloneRange()
-    r.collapse(toStart)
-    r.insertNode(cursor)
+  const cursor = document.createElement('span')
+  cursor.textContent = '|'
 
-    const {x, y, height} = cursor.getBoundingClientRect()
-    const top = (window.scrollY + y + height) + "px"
-    const left = (window.scrollX + x) + "px"
-    cursor.parentNode!.removeChild(cursor)
+  const r = s.getRangeAt(0).cloneRange()
+  r.collapse(toStart)
+  r.insertNode(cursor)
 
-    return {top, left}
-  }
-  return undefined
+  const { x, y, height } = cursor.getBoundingClientRect()
+  const top = window.scrollY + y + height + 'px'
+  const left = window.scrollX + x + 'px'
+  cursor.parentNode!.removeChild(cursor)
+
+  return { top, left }
 }
 
 /**

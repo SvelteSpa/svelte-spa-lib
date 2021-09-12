@@ -21,7 +21,7 @@ $$.last = function () {
 }
 
 $$.butLast = function () {
-  if (!this.length) return undefined
+  if (!this.length) return
   let a = [...this]
   a.pop()
   return a.join()

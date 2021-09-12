@@ -4,7 +4,7 @@ export type NN = number | Num
 
 const _eps = 0.000001
 
-export const num = (v: any = undefined) => Num.$(v)
+export const num = (v?: any) => Num.$(v)
 export default num
 
 export class Num extends Number {

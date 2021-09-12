@@ -354,7 +354,9 @@ export function CodeJar(
           // Remove full length tab or just remaining padding
           const len = Math.min(options.tabs, padding.length)
           restore({ start, end: start + len })
+
           document.execCommand('delete')
+
           pos.start -= len
           pos.end -= len
           restore(pos)
