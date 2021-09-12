@@ -26,24 +26,6 @@ test('each', (t) => {
   }
 })
 
-test('eachOwn', (t) => {
-  {
-    let vs = [] as any[]
-
-    let o = { 1: 10 }
-    o.each((v) => {
-      vs.push(v)
-    })
-    t.deepEqual([10], vs)
-
-    o = { 1: 10 }
-    o.each((_v, k) => {
-      vs.push(k)
-    })
-    t.deepEqual([10, '1'], vs)
-  }
-})
-
 test('find', (t) => {
   let o = { a: 1, b: 2, c: 3, d: 4, e: 5 }
   let find = (fun: any) => o.find(fun)

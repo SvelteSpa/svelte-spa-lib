@@ -4,7 +4,8 @@ type Self = any // chaining
 type Key = str
 type Val = any
 type FindFun = (v: Val, k: Key, o: {}) => bool
-type EachFun = (v: Val, k: Key, o: {}) => bool | void
+type WhileFun = (v: Val, k: Key, o: {}) => bool
+type EachFun = (v: Val, k: Key, o: {}) => any
 
 declare global {
   interface Object {
@@ -13,6 +14,7 @@ declare global {
     keys(): Key[]
     vals(): Val[]
     find(fun: FindFun): Key | false
+    while(fun: WhileFun): Self
     each(fun: EachFun): Self
     union(...os: any[]): {}
     clone(): any
@@ -62,16 +64,20 @@ $$.find = function (fun): Key | false {
   return false
 }
 
-$$.each = function (fun): Self {
+$$.while = function (fun, withBreak = true): Self {
   let es = Object.entries(this)
   let n = es.length
 
   for (let i = 0; i < n; ++i) {
     let [k, v] = es[i]
-    if (false === fun(v, k, this)) break
+    if (false === fun(v, k, this) && withBreak) break
   }
 
   return this
+}
+
+$$.each = function (fun): Self {
+  return this.while(fun, false)
 }
 
 $$.union = function (...os: any[]): {} {

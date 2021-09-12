@@ -3,7 +3,8 @@ export {}
 type Self = any // chaining
 type Ind = int
 type FindFun<T> = (v: T, i: Ind, a: T[]) => bool
-type EachFun<T> = (v: T, i: Ind, a: T[]) => bool | void
+type WhileFun<T> = (v: T, i: Ind, a: T[]) => bool
+type EachFun<T> = (v: T, i: Ind, a: T[]) => any
 
 declare global {
   interface ArrayConstructor {
@@ -13,6 +14,7 @@ declare global {
   interface Array<T> {
     sz(): int
     find(fun: FindFun<T>): Ind | false
+    while(fun: WhileFun<T>): Self
     each(fun: EachFun<T>): Self
     last(): T | undefined
     padded(lgt: int, v: T): T[]
@@ -41,14 +43,21 @@ $$.find = function <T>(
   return false
 }
 
-$$.each = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
+$$.while = function <T>(
+  fun: (v: T, i: Ind, a: T[]) => bool,
+  withBreak = true
+): Self {
   let n = this.length
 
   for (let i = 0; i < n; ++i) {
-    if (false === fun(this[i], i as int, this)) break
+    if (false === fun(this[i], i as int, this) && withBreak) break
   }
 
-  return false
+  return this
+}
+
+$$.each = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
+  this.while(fun, false)
 }
 
 $$.last = function <T>(): T | undefined {
