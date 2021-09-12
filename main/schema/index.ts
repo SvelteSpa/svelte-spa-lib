@@ -1,3 +1,5 @@
+import O from '@spa/obj'
+
 type CssVars = {}
 type Schema = { name?: str; color?: str; vs: CssVars }
 
@@ -136,7 +138,7 @@ function setCssVar(k: str, v: str) {
 
 function applyCssVars(vs: CssVars) {
   let style = (document as any).querySelector(':root').style
-  vs.each((v, k) => style.setProperty('--' + k, v))
+  O(vs).each((v, k) => style.setProperty('--' + k, v))
 }
 
 function applySchema(s: Schema[], n: int) {

@@ -1,3 +1,4 @@
+import O from '@spa/obj'
 import run from '@spa/run'
 import type { Writable } from 'svelte/store'
 import { writable, derived, get } from 'svelte/store'
@@ -19,7 +20,7 @@ let dict: Dict
 
 function selText(ts: LangText, withDef = true): str {
   let t: any
-  ;(t = ts).isStr() ||
+  O((t = ts)).isStr() ||
     undefined !== (t = ts[curLangIndex]) ||
     (withDef && undefined !== (t = ts[0])) ||
     (t = '')
@@ -69,7 +70,7 @@ function signal(l?: Lang) {
 
 function setAvailLangs(ls: Langs) {
   dict = new Map()
-  availLangs = ls.clone()
+  availLangs = O.clone(ls)
   setCurLang(availLangs[0] || '')
 }
 
@@ -81,7 +82,7 @@ function setCurLang(lang: Lang) {
 }
 
 function addText(key: Key, val: LangText, refresh = true) {
-  dict.set(key, val.clone())
+  dict.set(key, O.clone(val))
   if (refresh) signal()
 }
 
@@ -89,8 +90,9 @@ type DictArr = [Key, LangText][]
 type DictObj = { [key: string]: LangText }
 
 function addDict(data: DictArr | DictObj, refresh = true) {
-  if (data.isArr()) (data as DictArr).forEach(([k, v]) => addText(k, v, false))
-  else (data as DictObj).each((v, k) => addText(k, v, false))
+  if (O(data).isArr())
+    (data as DictArr).forEach(([k, v]) => addText(k, v, false))
+  else O(data as DictObj).each((v, k) => addText(k, v, false))
   if (refresh) signal()
 }
 

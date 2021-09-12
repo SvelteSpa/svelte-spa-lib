@@ -1,4 +1,4 @@
 import lang from './lang'
-import './sys/patch'
+import './sys/typs'
 
 lang.setAvailLangs([])

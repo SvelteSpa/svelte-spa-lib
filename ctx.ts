@@ -1,5 +1,6 @@
 // Context - parent-child blocks
 import layout from '@spa/block/layout'
+import O from '@spa/obj'
 import { getContext, setContext } from 'svelte'
 import type { Writable, Readable } from 'svelte/store'
 import { writable, derived } from 'svelte/store'
@@ -16,7 +17,7 @@ type CompCtx = {
 }
 
 // existing (parent) context
-let get = () => getContext(compCtxKey) as CompCtx
+let get = () => (getContext(compCtxKey) || {}) as CompCtx
 
 // new (child) context
 let make = (debugTag: str): CompCtx => ({
@@ -26,7 +27,7 @@ let make = (debugTag: str): CompCtx => ({
 
 // new (combined) context
 let set = (debugTag: str): CompCtx => {
-  let ctx = $.get().union(make(debugTag)) as CompCtx
+  let ctx = O.union($.get(), make(debugTag)) as CompCtx
   setContext(compCtxKey, ctx)
   return ctx
 }

@@ -1,5 +1,6 @@
 import ra from '@spa/geom/ra'
 import xy from '@spa/geom/xy'
+import O from '@spa/obj'
 
 const NS = 'http://www.w3.org/2000/svg'
 
@@ -32,7 +33,7 @@ class Node extends SVGElement {
   }
 
   attrs(as: {}) {
-    as.each((v, k) => this.attr(k, v))
+    O(as).each((v, k) => this.attr(k, v))
     return this
   }
 

@@ -1,4 +1,4 @@
-export {}
+import O from '@spa/obj'
 
 type Self = any // chaining
 type Ind = int
@@ -64,7 +64,7 @@ $$.last = function <T>(): T | undefined {
 }
 
 $$.padded = function <T>(lgt: int, v: T): T[] {
-  let a = this.clone().slice(0, lgt)
+  let a = O.clone(this).slice(0, lgt)
   while (a.length < lgt) a.push(v)
   return a
 }

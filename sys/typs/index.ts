@@ -1,7 +1,6 @@
 import './arr'
 import './fun'
 import './num'
-import './obj'
 import './str'
 
 declare global {
