@@ -43,21 +43,19 @@ $$.find = function <T>(
   return false
 }
 
-$$.while = function <T>(
-  fun: (v: T, i: Ind, a: T[]) => bool,
-  withBreak = true
-): Self {
+$$.while = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
   let n = this.length
 
   for (let i = 0; i < n; ++i) {
-    if (false === fun(this[i], i as int, this) && withBreak) break
+    if (false === fun(this[i], i as int, this)) break
   }
 
   return this
 }
 
 $$.each = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
-  this.while(fun, false)
+  this.forEach(fun)
+  return this
 }
 
 $$.last = function <T>(): T | undefined {
