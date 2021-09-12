@@ -1,13 +1,12 @@
 <script context="module" lang="ts">
   import { fade } from 'svelte/transition'
-  import fun from '@spa/fun'
 </script>
 
 <script lang="ts">
   export let msg: any
   export let onClose = () => {}
 
-  $: if (msg) fun.debounce(onClose, 1777)()
+  $: if (msg) onClose.debounce(1777)()
 </script>
 
 {#if msg}
