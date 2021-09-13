@@ -24,7 +24,7 @@
 
   textarea {
     width: 100%;
-    border: thin solid var(--inpOk);
+    border: thin solid var(--inp-brd);
     border-radius: 2px;
     resize: vertical;
   }

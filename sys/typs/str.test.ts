@@ -15,9 +15,13 @@ test('split', (t) => {
 
 test('utf', (t) => {
   t.is('hello', '\u0068ell\u006F')
-  t.is(1, 'a'.length)
-  t.is(2, '🍕'.length)
-  t.is(1, [...'🍕'].length)
+  t.is(1, 'a'.sz)
+  t.is(2, '🍕'.sz)
+  t.is(1, [...'🍕'].sz)
+})
+
+test('sz', (t) => {
+  t.is(0, ''.sz)
 })
 
 test('last', (t) => {

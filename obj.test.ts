@@ -3,7 +3,7 @@ import test from 'ava'
 import O from './obj'
 
 test('obj', (t) => {
-  t.is(2, O({ a: 1, b: 2 }).sz())
+  t.is(2, O({ a: 1, b: 2 }).sz)
 })
 
 test('each', (t) => {
@@ -34,13 +34,13 @@ test('find', (t) => {
 })
 
 test('sz', (t) => {
-  t.is(0, [].sz())
-  t.is(0, ''.sz())
-  t.is(0, O({}).sz())
+  t.is(0, [].sz)
+  t.is(0, ''.sz)
+  t.is(0, O({}).sz)
 
-  t.is(1, [null].sz())
-  t.is(1, ' '.sz())
-  t.is(1, O({ a: 9 }).sz())
+  t.is(1, [null].sz)
+  t.is(1, ' '.sz)
+  t.is(1, O({ a: 9 }).sz)
 })
 
 test('keys', (t) => {
@@ -58,9 +58,9 @@ test('uni', (t) => {
   )
 })
 
-test('clear', (t) => {
+test('empty', (t) => {
   let o = { a: 1, b: 2 }
-  O.clear(o)
+  O.empty(o)
   t.deepEqual({}, o as {})
 })
 
@@ -123,4 +123,21 @@ test('is', (t) => {
 test('as', (t) => {
   ;[[], [34], [{}]].forEach((a) => t.is(a, O(a).asArr()))
   ;[false, 34, {}].forEach((x) => t.deepEqual([x], O(x).asArr()))
+})
+
+test('gen', (t) => {
+  t.deepEqual(
+    [0, 1, 2, 3],
+    O.gen(4 as int, (i) => i)
+  )
+
+  t.deepEqual(
+    ['0', 1, '2', 3],
+    O.gen(4 as int, (i) => (i % 2 ? i : i + ''))
+  )
+})
+
+test('iota', (t) => {
+  t.deepEqual([0, 1, 2, 3], O.iota(0 as int, 4 as int))
+  t.deepEqual([1, 3, 5], O.iota(1 as int, 3 as int, 2 as int))
 })

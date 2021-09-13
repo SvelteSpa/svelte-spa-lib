@@ -16,7 +16,7 @@
   }
 </script>
 
-{#if 1 < ls.length}
+{#if 1 < ls.sz}
   <div>
     {#each ls as l}
       <span class:sel={cl == l} on:click={() => sel(l)}>{l}</span>

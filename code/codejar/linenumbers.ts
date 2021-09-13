@@ -11,12 +11,12 @@ export function withLineNumbers(
   options: Partial<Options> = {}
 ) {
   const opts: Options = {
-    class: "codejar-linenumbers",
-    wrapClass: "codejar-wrap",
-    width: "35px",
-    backgroundColor: "rgba(128, 128, 128, 0.15)",
-    color: "",
-    ...options
+    class: 'codejar-linenumbers',
+    wrapClass: 'codejar-wrap',
+    width: '35px',
+    backgroundColor: 'rgba(128, 128, 128, 0.15)',
+    color: '',
+    ...options,
   }
 
   let lineNumbers: HTMLElement
@@ -25,13 +25,16 @@ export function withLineNumbers(
 
     if (!lineNumbers) {
       lineNumbers = init(editor, opts)
-      editor.addEventListener("scroll", () => lineNumbers.style.top = `-${editor.scrollTop}px`);
+      editor.addEventListener(
+        'scroll',
+        () => (lineNumbers.style.top = `-${editor.scrollTop}px`)
+      )
     }
 
-    const code = editor.textContent || ""
-    const linesCount = code.replace(/\n+$/, "\n").split("\n").length + 1
+    const code = editor.textContent || ''
+    const linesCount = code.replace(/\n+$/, '\n').split('\n').sz + 1
 
-    let text = ""
+    let text = ''
     for (let i = 1; i < linesCount; i++) {
       text += `${i}\n`
     }
@@ -43,24 +46,24 @@ export function withLineNumbers(
 function init(editor: HTMLElement, opts: Options): HTMLElement {
   const css = getComputedStyle(editor)
 
-  const wrap = document.createElement("div")
+  const wrap = document.createElement('div')
   wrap.className = opts.wrapClass
-  wrap.style.position = "relative"
+  wrap.style.position = 'relative'
 
-  const gutter = document.createElement("div")
+  const gutter = document.createElement('div')
   gutter.className = opts.class
   wrap.appendChild(gutter)
 
   // Add own styles
-  gutter.style.position = "absolute"
-  gutter.style.top = "0px"
-  gutter.style.left = "0px"
-  gutter.style.bottom = "0px"
+  gutter.style.position = 'absolute'
+  gutter.style.top = '0px'
+  gutter.style.left = '0px'
+  gutter.style.bottom = '0px'
   gutter.style.width = opts.width
-  gutter.style.overflow = "hidden"
+  gutter.style.overflow = 'hidden'
   gutter.style.backgroundColor = opts.backgroundColor
   gutter.style.color = opts.color || css.color
-  gutter.style.setProperty("mix-blend-mode", "difference")
+  gutter.style.setProperty('mix-blend-mode', 'difference')
 
   // Copy editor styles
   gutter.style.fontFamily = css.fontFamily
@@ -72,14 +75,14 @@ function init(editor: HTMLElement, opts: Options): HTMLElement {
   gutter.style.borderBottomLeftRadius = css.borderBottomLeftRadius
 
   // Add line numbers
-  const lineNumbers = document.createElement("div");
-  lineNumbers.style.position = "relative";
-  lineNumbers.style.top = "0px"
+  const lineNumbers = document.createElement('div')
+  lineNumbers.style.position = 'relative'
+  lineNumbers.style.top = '0px'
   gutter.appendChild(lineNumbers)
 
   // Tweak editor styles
   editor.style.paddingLeft = `calc(${opts.width} + ${gutter.style.paddingLeft})`
-  editor.style.whiteSpace = "pre"
+  editor.style.whiteSpace = 'pre'
 
   // Swap editor with a wrap
   editor.parentNode!.insertBefore(wrap, editor)

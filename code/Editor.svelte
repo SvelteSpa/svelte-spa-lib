@@ -27,7 +27,7 @@
   }
 
   let toPosition = (p?: Pos): Position => {
-    let e = el.textContent.length
+    let e = el.textContent.sz
     let [start, end] = p || [e as int, e as int]
     return { start, end }
   }

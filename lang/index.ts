@@ -99,7 +99,7 @@ function addDict(data: DictArr | DictObj, refresh = true) {
 let $ = {
   setAvailLangs,
   availLangs: () => availLangs,
-  hasLangs: () => 0 < availLangs.length,
+  hasLangs: () => 0 < availLangs.sz,
 
   setCurLang,
   curLang: () => get(curLang),

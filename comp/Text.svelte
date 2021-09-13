@@ -100,14 +100,14 @@
 
   input {
     padding: var(--p2) var(--p4);
-    border: thin solid var(--inpOk);
+    border: thin solid var(--inp-brd);
     border-radius: 2px;
   }
 
   input.error {
-    border-color: var(--inpErr);
+    border-color: var(--err-brd);
     border-width: 2px;
-    outline-color: var(--inpErr);
+    outline-color: var(--err-brd);
   }
 
   span {
@@ -120,7 +120,7 @@
 
   datalist {
     position: absolute;
-    border: thin solid var(--inpOk);
+    border: thin solid var(--inp-brd);
     border-radius: 2px;
     background-color: var(--bgnd);
     z-index: 1;

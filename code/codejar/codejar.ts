@@ -168,8 +168,8 @@ export function CodeJar(
       }
 
       if (el.nodeType === Node.TEXT_NODE) {
-        if (pos.dir != '->') pos.start += el.nodeValue!.length
-        if (pos.dir != '<-') pos.end += el.nodeValue!.length
+        if (pos.dir != '->') pos.start += el.nodeValue!.sz
+        if (pos.dir != '<-') pos.end += el.nodeValue!.sz
       }
     })
 
@@ -199,7 +199,7 @@ export function CodeJar(
     visit(editor, (el) => {
       if (el.nodeType !== Node.TEXT_NODE) return
 
-      const len = (el.nodeValue || '').length
+      const len = (el.nodeValue || '').sz
       if (current + len >= pos.start) {
         if (!startNode) {
           startNode = el
@@ -268,7 +268,7 @@ export function CodeJar(
       }
 
       // Preserve padding
-      if (newLinePadding.length > 0) {
+      if (newLinePadding.sz > 0) {
         preventDefault(event)
         event.stopPropagation()
         insert('\n' + newLinePadding)
@@ -307,7 +307,7 @@ export function CodeJar(
     const close = `)]}'"`
     const codeAfter = afterCursor()
     const codeBefore = beforeCursor()
-    const escapeCharacter = codeBefore.substr(codeBefore.length - 1) === '\\'
+    const escapeCharacter = codeBefore.substr(codeBefore.sz - 1) === '\\'
     const charAfter = codeAfter.substr(0, 1)
     if (
       close.includes(event.key) &&
@@ -349,10 +349,10 @@ export function CodeJar(
       if (event.shiftKey) {
         const before = beforeCursor()
         let [padding, start] = findPadding(before)
-        if (padding.length > 0) {
+        if (padding.sz > 0) {
           const pos = save()
           // Remove full length tab or just remaining padding
-          const len = Math.min(options.tabs, padding.length)
+          const len = Math.min(options.tabs, padding.sz)
           restore({ start, end: start + len })
 
           document.execCommand('delete')
@@ -387,7 +387,7 @@ export function CodeJar(
         editor.innerHTML = record.html
         restore(record.pos)
       }
-      if (at >= history.length) at--
+      if (at >= history.sz) at--
     }
   }
 
@@ -426,7 +426,7 @@ export function CodeJar(
     const pos = save()
     insert(text)
     highlight(editor)
-    restore({ start: pos.start + text.length, end: pos.start + text.length })
+    restore({ start: pos.start + text.sz, end: pos.start + text.sz })
   }
 
   function visit(
@@ -481,12 +481,12 @@ export function CodeJar(
 
   function findPadding(text: string): [string, number, number] {
     // Find beginning of previous line.
-    let i = text.length - 1
+    let i = text.sz - 1
     while (i >= 0 && text[i] !== '\n') i--
     i++
     // Find padding of the line.
     let j = i
-    while (j < text.length && /[ \t]/.test(text[j])) j++
+    while (j < text.sz && /[ \t]/.test(text[j])) j++
     return [text.substring(i, j) || '', i, j]
   }
 

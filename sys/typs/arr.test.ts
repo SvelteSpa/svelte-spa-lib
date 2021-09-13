@@ -2,18 +2,6 @@ import '@spa/init'
 import test from 'ava'
 import './arr'
 
-test('iota', (t) => {
-  t.deepEqual(
-    [0, 1, 2, 3],
-    Array.iota(4 as int, (i) => i)
-  )
-
-  t.deepEqual(
-    ['0', 1, '2', 3],
-    Array.iota(4 as int, (i) => (i % 2 ? i : i + ''))
-  )
-})
-
 test('each', (t) => {
   {
     let vs = [0]

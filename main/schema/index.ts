@@ -149,7 +149,7 @@ function applySchema(s: Schema[], n: int) {
 }
 
 let $ = {
-  numColors: colors.length,
+  numColors: colors.sz,
   applyColor: (n: int) => applySchema(colors, n),
   applySizes: (n: int) => applySchema(sizes, n),
   applyEffects: (n: int) => applySchema(effects, n),

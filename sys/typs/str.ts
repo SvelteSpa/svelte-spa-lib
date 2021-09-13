@@ -2,7 +2,7 @@ export {}
 
 declare global {
   interface String {
-    sz(): int
+    get sz(): int
     last(): chr | undefined
     butLast(): chr | undefined
     // split a string by separator, optionally trim and discard empty strings
@@ -14,16 +14,18 @@ declare global {
 
 let $$ = String.prototype
 
-$$.sz = function (): int {
-  return this.length
-}
+Object.defineProperty($$, 'sz', {
+  get: function sz() {
+    return this.length
+  },
+})
 
 $$.last = function () {
   return [...this].slice(-1)[0]
 }
 
 $$.butLast = function () {
-  if (!this.length) return
+  if (!this.sz) return
   let a = [...this]
   a.pop()
   return a.join()

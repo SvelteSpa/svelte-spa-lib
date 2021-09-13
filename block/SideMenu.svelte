@@ -15,7 +15,7 @@
   }
 </script>
 
-{#if entries.length}
+{#if entries.sz}
   <x-curtain on:click={() => onClick()} transition:fade={{ duration: 100 }}>
     <main on:click={() => onClick()}>
       <f-bcr>

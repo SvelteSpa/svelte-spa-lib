@@ -1,17 +1,26 @@
 // Concise access to Obj
 interface ObjO {
   <T>(o: T): Obj<T>
-  clear: (o: any) => void
+  empty: (o: any) => void
   clone: <T>(o: T) => T
   union: (...os: any[]) => {}
   asAny: (o: any) => any
+  gen(n: int, mapFun: (i: int) => any): any[]
+  iota(min: int, num: int, step?: int): int[]
+}
+
+let gen = function (n: int, mapFun?: (i: int) => any) {
+  return Array.from({ length: n }, (_v, i) => (mapFun ? mapFun(i as int) : i))
 }
 
 let O = Object.assign(<T>(o: T) => new Obj(o), {
-  clear: (o: any) => Obj.clear(o),
+  empty: (o: any) => Obj.empty(o),
   clone: (o: any) => Obj.clone(o),
   union: (...os: any[]) => Obj.union(...os),
   asAny: (o: any): any => o,
+  gen,
+  iota: (min: int, num: int, step = 1 as int) =>
+    gen(num, (i) => min + i * step),
 }) as ObjO
 
 export default O
@@ -26,11 +35,11 @@ type EachFun = (v: Val, k: Key, o: {}) => any
 class Obj<T> {
   constructor(public o: any) {}
 
-  static clear(o: any): void {
+  static empty(o: any): void {
     Object.keys(o).forEach((key: Key) => delete o[key])
   }
 
-  sz(): int {
+  get sz(): int {
     return this.keys().length as int
   }
 
@@ -44,7 +53,7 @@ class Obj<T> {
 
   find(fun: FindFun): Key | false {
     let es = Object.entries(this.o)
-    let n = es.length
+    let n = es.sz
 
     for (let i = 0; i < n; ++i) {
       let [k, v] = es[i]
@@ -56,7 +65,7 @@ class Obj<T> {
 
   while(fun: WhileFun, withBreak = true): Self<T> {
     let es = Object.entries(this.o)
-    let n = es.length
+    let n = es.sz
 
     for (let i = 0; i < n; ++i) {
       let [k, v] = es[i]
