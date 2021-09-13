@@ -42,6 +42,20 @@ test('find', (t) => {
   t.true(2 === find((v: any) => 3 == v))
 })
 
+test('findStr', (t) => {
+  t.true(false === [].findStr('1'))
+  t.true(false === [1].findStr('1'))
+  t.true(0 === ['1'].findStr('1'))
+
+  t.true(1 === [1, 'a', 2].findStr('a'))
+  t.true(1 === [1, 'a', 2].findStr('A'))
+  t.true(1 === [1, 'a', 2].findStr('a', true))
+  t.true(false === [1, 'a', 2].findStr('A', true))
+
+  t.true(0 === ['A', 'a', 'a'].findStr('a', false))
+  t.true(1 === ['A', 'a', 'a'].findStr('a', true))
+})
+
 test('last', (t) => {
   t.is(3, [1, 2, 3].last())
   t.is(undefined, [].last())

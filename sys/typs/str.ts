@@ -5,8 +5,10 @@ declare global {
     sz(): int
     last(): chr | undefined
     butLast(): chr | undefined
-    // split a string by separator, optionally trim and throw out empty strings
+    // split a string by separator, optionally trim and discard empty strings
     xsplit(sep?: str, trim?: bool, withEmpties?: bool): str[]
+    lc(): str
+    uc(): str
   }
 }
 
@@ -32,4 +34,12 @@ $$.xsplit = function (sep: str = '\n', trim = true, withEmpties = false) {
     .split(sep)
     .map((_) => (trim ? _.trim() : _))
     .filter((_) => withEmpties || _.trim())
+}
+
+$$.lc = function () {
+  return this.toLowerCase()
+}
+
+$$.uc = function () {
+  return this.toUpperCase()
 }

@@ -35,3 +35,10 @@ test('butLast', (t) => {
   t.is('🍕', '🍕č'.butLast())
   t.is('🍕', '🍕🍕'.butLast())
 })
+
+test('case', (t) => {
+  t.is('a', 'a'.lc())
+  t.is('a', 'A'.lc())
+  t.is('A', 'a'.uc())
+  t.is('A', 'A'.uc())
+})

@@ -14,6 +14,7 @@ declare global {
   interface Array<T> {
     sz(): int
     find(fun: FindFun<T>): Ind | false
+    findStr(val: str, caseSensitive?: bool): Ind | false
     while(fun: WhileFun<T>): Self
     each(fun: EachFun<T>): Self
     last(): T | undefined
@@ -31,9 +32,7 @@ $$.sz = function (): int {
   return this.length
 }
 
-$$.find = function <T>(
-  fun: (v: T, i: Ind, a: T[]) => bool | false
-): Ind | false {
+$$.find = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Ind | false {
   let n = this.length
 
   for (let i = 0; i < n; ++i) {
@@ -41,6 +40,11 @@ $$.find = function <T>(
   }
 
   return false
+}
+
+$$.findStr = function (val: str, cs = false): Ind | false {
+  if (!cs) val = val.lc()
+  return this.find((v: any) => O(v).isStr() && (cs ? v : v.lc()) == val)
 }
 
 $$.while = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
