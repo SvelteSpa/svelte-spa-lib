@@ -1,5 +1,5 @@
 // do first
-import type { MenuEntry } from '@spa/block'
+import type { MenuEntry, LR } from '@spa/block'
 import type { CompData } from '@spa/comp'
 import run, { setEnv, initUserActions } from '@spa/run'
 import type { Writable } from 'svelte/store'
@@ -22,7 +22,12 @@ if (window) {
 
   // handle escape key
   w.onkeydown = (e: any) => {
-    if ('Escape' === e.code) $.onEscape()
+    switch (e.code) {
+      case 'Escape':
+        closeMenu()
+        closeModalDlg()
+        break
+    }
   }
 
   // prevent triple-click selections
@@ -48,8 +53,19 @@ let setTitle = (appTitle: str, docTitle: str) => {
 }
 
 // side menu
-let menuEntries = writable([] as MenuEntry[])
+let menuEntries = writable(['l', []] as [LR, MenuEntry[]])
 let onMenuClose: FnVoidUnd
+
+let openMenu = (lr: LR, entries: MenuEntry[], onClose: FnVoidUnd) => {
+  onMenuClose = onClose
+  menuEntries.set([lr, entries])
+}
+
+let closeMenu = () => {
+  menuEntries.set(['l', []])
+  if (onMenuClose) onMenuClose()
+  onMenuClose = undefined
+}
 
 // modal dialog
 export type ModalData = [CompData, bool]
@@ -63,6 +79,12 @@ let openModalDlg = (c: CompData, pad: bool, onClose: FnVoidUnd) => {
   modalDlg.set([c, pad])
 }
 
+let closeModalDlg = () => {
+  modalDlg.set(null)
+  if (onModalClose) onModalClose()
+  onModalClose = undefined
+}
+
 let $ = {
   init,
   setTitle,
@@ -70,19 +92,9 @@ let $ = {
   title: '',
   ver: '',
 
-  onEscape: () => {},
-
   menuEntries,
-  openMenu: (entries: MenuEntry[], onClose: FnVoidUnd) => {
-    onMenuClose = onClose
-    menuEntries.set(entries)
-  },
-
-  closeMenu: () => {
-    menuEntries.set([])
-    if (onMenuClose) onMenuClose()
-    onMenuClose = undefined
-  },
+  openMenu,
+  closeMenu,
 
   modalDlg,
 
@@ -92,11 +104,7 @@ let $ = {
   openModalDlgPlain: (c: CompData, onClose?: FnVoidUnd) =>
     openModalDlg(c, false, onClose),
 
-  closeModalDlg: () => {
-    modalDlg.set(null)
-    if (onModalClose) onModalClose()
-    onModalClose = undefined
-  },
+  closeModalDlg,
 
   // spinner
   busy,

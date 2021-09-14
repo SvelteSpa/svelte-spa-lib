@@ -7,7 +7,7 @@
 
   import ModalDlg from '@spa/block/ModalDlg.svelte'
 
-  import type { MenuEntry } from '@spa/block'
+  import type { MenuEntry, LR } from '@spa/block'
   import SideMenu from '@spa/block/SideMenu.svelte'
   import Usr from './Usr.svelte'
 </script>
@@ -17,7 +17,7 @@
   let h = 0
   $: ctx.upd(w as int, h as int)
 
-  let menuEntries: MenuEntry[]
+  let menuEntries: [LR, MenuEntry[]]
   main.menuEntries.subscribe((_) => (menuEntries = _))
 
   let modalDlg: ModalData | null = null
@@ -48,7 +48,7 @@
   </div>
 
   <ModalDlg dlg={modalDlg} />
-  <SideMenu entries={menuEntries} />
+  <SideMenu entries={menuEntries[1]} lr={menuEntries[0]} />
   <Usr msg={$usrMsg} onClose={() => usrMsg.set('')} />
 {/if}
 

@@ -6,18 +6,18 @@
   export let toLower = false
 
   // validation
-  export let re: RegExp | null = null
+  export let re: RegExp | undefined = undefined
   export let allowEmpty = false
   export let isValid = true
   export let maxlength: any = 50
 
   // list validation and lookup
-  export let list: str[] = []
+  export let list: str[] | undefined = undefined
 
   let error = false
 
   function test() {
-    isValid = null === re || (allowEmpty && !text) || re.test(text)
+    isValid = !re || (allowEmpty && !text) || re.test(text)
     if (isValid && list) isValid = false !== list.findStr(text)
     error = !isValid
   }
@@ -100,14 +100,16 @@
 
   input {
     padding: var(--p2) var(--p4);
+    margin: 1px;
+    margin: 1px;
     border: thin solid var(--inp-brd);
-    border-radius: 2px;
+    border-width: 1px;
   }
 
   input.error {
     border-color: var(--err-brd);
     border-width: 2px;
-    outline-color: var(--err-brd);
+    margin: 0;
   }
 
   span {

@@ -15,7 +15,7 @@
   export let sel = false
   export let withTx = true
 
-  let xIco = on ? icoOn || ico : ico
+  $: xIco = on ? icoOn || ico : ico
 </script>
 
 {#if img}
