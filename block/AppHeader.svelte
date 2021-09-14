@@ -1,5 +1,6 @@
 <script context="module" lang="ts">
   import ctx from '@spa/ctx'
+  import { loggedIn } from '@spa/user'
   import ico from '@spa/main/sysicons'
   import lang, { t } from '@spa/lang'
   import IcoTx from '@spa/comp/IcoTx.svelte'
@@ -34,6 +35,7 @@
   }
 
   let userOn = false
+  $: on = $loggedIn
   function user() {
     onFn(onUser, (b) => (userOn = b))
   }
@@ -69,6 +71,7 @@
       onClick={user}
       sel={userOn}
       withTx={$isWide}
+      {on}
     />
   {/if}
   {#if onCog}

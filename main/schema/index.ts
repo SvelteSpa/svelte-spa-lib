@@ -53,6 +53,7 @@ let colors: Schema[] = [
       'err-brd': '#f00',
       // misc
       'spn-bg': '#ade', // spin
+      'msg-bg': 'blue', // spin
     },
   },
 
