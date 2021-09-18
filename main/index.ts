@@ -2,6 +2,7 @@
 import type { MenuEntry, LR } from '@spa/block'
 import type { CompData } from '@spa/comp'
 import run, { setEnv, initUserActions } from '@spa/run'
+import user from '@spa/user'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 import schema from './schema'
@@ -36,15 +37,23 @@ if (window) {
   }
 }
 
-let init = (title: str, ver: str) => {
-  setTitle(title, `${title} - ${ver}`)
+let init = (name: str, ver: str) => {
+  $.name = name
   $.ver = ver
+
+  setTitle(name, `${name} - ${ver}`)
 
   schema.applyColor(1 as int)
   schema.applySizes(0 as int)
   schema.applyEffects(0 as int)
 
   initUserActions()
+
+  window.onbeforeunload = () => {
+    user.store()
+  }
+
+  user.restore()
 }
 
 let setTitle = (appTitle: str, docTitle: str) => {
@@ -89,8 +98,11 @@ let $ = {
   init,
   setTitle,
 
-  title: '',
+  name: '',
   ver: '',
+  title: '',
+
+  key: () => $.name + ':' + $.ver + ':',
 
   menuEntries,
   openMenu,

@@ -1,6 +1,6 @@
 <script context="module" lang="ts">
   import ctx from '@spa/ctx'
-  import spaUser, { loggedIn } from '@spa/user'
+  import { user as spaUser } from '@spa/user'
   import ico from '@spa/main/sysicons'
   import lang, { t } from '@spa/lang'
   import IcoTx from '@spa/comp/IcoTx.svelte'
@@ -35,7 +35,7 @@
   }
 
   let userOn = false
-  $: on = $loggedIn
+  $: on = 0 < $spaUser.id
 
   function user() {
     onFn(onUser, (b) => (userOn = b))

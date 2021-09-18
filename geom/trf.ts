@@ -18,7 +18,7 @@ export class Trf {
     return new Trf(tr, sc)
   }
 
-  toString(): string {
+  toString(): str {
     return `(${this.tr}/${this.sc})`
   }
 
@@ -34,7 +34,7 @@ export class Trf {
     return this.tr.eq(o.tr) && this.sc.eq(o.sc)
   }
 
-  svgString(): string {
+  svgString(): str {
     let s = ''
     if (!this.tr.is0()) s += `translate(${this.tr._x} ${this.tr._y}) `
     if (!this.sc.is0()) s += `scale(${this.sc._x} ${this.sc._y})`
