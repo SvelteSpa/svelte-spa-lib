@@ -147,12 +147,6 @@ export class Xhr {
     return this
   }
 
-  // w/o locking
-  lock(on: bool): Self {
-    this._doLock = on
-    return this
-  }
-
   // go
   get(): Self {
     return this
@@ -164,7 +158,9 @@ export class Xhr {
   }
 
   // go
-  send(): bool {
+  send(doLock = true): bool {
+    this._doLock = doLock
+
     if (!this._lock()) return false
     let xhr = xhrRequest(this)
 
