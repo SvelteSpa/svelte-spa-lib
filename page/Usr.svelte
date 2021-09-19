@@ -6,7 +6,7 @@
   export let msg: any
   export let onClose = () => {}
 
-  $: if (msg) onClose.debounce(1777)()
+  $: if (msg) onClose.debounce(5678)()
 </script>
 
 {#if msg}
