@@ -80,8 +80,11 @@ function xhrRequest(x: Xhr) {
 
 let _ms = 777
 
+type Self = Xhr
 export class Xhr {
   _url: str
+  _body: {}
+
   _thenFun: ThenFun | null = null
   _failFun: FailFun | null = null
   _afterFun: AfterFun | null = null
@@ -112,8 +115,8 @@ export class Xhr {
     if (!run.sysChk(isBusy, () => 'xhr not busy')) return
 
     clearTimeout(busyReportTimeout)
-    busyReportTimeout = // how fast to un-report
-    (() => {
+    busyReportTimeout = (() => {
+      // how fast to un-report
       this._busyFun((busyReported = false))
     }).delay(busyReported ? _ms : 0)
 
@@ -121,58 +124,62 @@ export class Xhr {
   }
 
   // on success, still locked
-  then(fun: ThenFun): Xhr {
+  then(fun: ThenFun): Self {
     this._thenFun = fun
     return this
   }
 
   // on failure, still locked
-  fail(fun: FailFun): Xhr {
+  fail(fun: FailFun): Self {
     this._failFun = fun
     return this
   }
 
   // on success, after unlocked
-  after(fun: AfterFun): Xhr {
+  after(fun: AfterFun): Self {
     this._afterFun = fun
     return this
   }
 
   // always, after unlocked
-  finally(fun: FinallyFun): Xhr {
+  finally(fun: FinallyFun): Self {
     this._finallyFun = fun
     return this
   }
 
   // w/o locking
-  lock(on: bool): Xhr {
+  lock(on: bool): Self {
     this._doLock = on
     return this
   }
 
   // go
-  get(): bool {
-    if (!this._lock()) return false
-    let xhr = xhrRequest(this)
-
-    xhr.open('GET', this._url)
-    xhr.setRequestHeader('Accept', 'application/json')
-    xhr.send()
-
-    return true
+  get(): Self {
+    return this
   }
 
-  post(obj: {}): bool {
+  post(obj: {}): Self {
+    this._body = obj
+    return this
+  }
+
+  // go
+  send(): bool {
     if (!this._lock()) return false
     let xhr = xhrRequest(this)
 
-    xhr.open('POST', this._url)
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+    let body: any = this._body
+
+    xhr.open(body ? 'POST' : 'GET', this._url)
     xhr.setRequestHeader('Accept', 'application/json')
 
-    let json = JSON.stringify(obj)
-    run.TR(1, () => `post: ${json}`)
-    xhr.send(json)
+    if (body) {
+      xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+      body = JSON.stringify(this._body)
+      run.TR(1, () => `post: ${body}`)
+    }
+
+    xhr.send(body)
     return true
   }
 }
