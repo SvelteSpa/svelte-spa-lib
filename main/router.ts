@@ -23,7 +23,7 @@ let decodeRoute = (route: str): Route => {
     : []
 }
 
-let getRoute = (): Route => decodeRoute(window.location.href)
+let getRoute = (): Route => decodeRoute(location.href)
 
 // reactive
 let curRoute: Readable<Route> = readable(
@@ -35,10 +35,10 @@ let curRoute: Readable<Route> = readable(
       set(getRoute())
     }
 
-    window.addEventListener('hashchange', update, false)
+    addEventListener('hashchange', update, false)
 
     return function stop() {
-      window.removeEventListener('hashchange', update, false)
+      removeEventListener('hashchange', update, false)
     }
   }
 )
@@ -54,12 +54,14 @@ async function push(route: Route, title = ''): Promise<void> {
     title
   )
 
-  window.location.hash = encodeRoute(route)
+  let hash = encodeRoute(route)
+  if (location.hash != hash) location.hash = hash
+  else dispatchEvent(new Event('hashchange'))
 }
 
 async function pop(): Promise<void> {
   await tick()
-  window.history.back()
+  history.back()
 }
 
 async function replace(route: Route, title = ''): Promise<void> {
@@ -69,11 +71,11 @@ async function replace(route: Route, title = ''): Promise<void> {
     const newState = {
       ...history.state,
     }
-    window.history.replaceState(newState, title, encodeRoute(route))
+    history.replaceState(newState, title, encodeRoute(route))
   } catch (e) {}
 
   // trigger the event
-  window.dispatchEvent(new Event('hashchange'))
+  dispatchEvent(new Event('hashchange'))
 }
 
 // util
