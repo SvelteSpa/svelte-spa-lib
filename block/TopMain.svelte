@@ -1,10 +1,7 @@
 <script context="module" lang="ts">
-  import type { Brd } from '.'
-  import { clsBrd } from '.'
 </script>
 
 <script lang="ts">
-  export let brd: Brd = ''
   export let scrollPad = 0 as int
   export let scrollTop = 0 as int
 
@@ -15,7 +12,7 @@
   }
 </script>
 
-<div class={clsBrd('pri', brd)} on:scroll={onScroll}>
+<div on:scroll={onScroll}>
   <slot />
 </div>
 

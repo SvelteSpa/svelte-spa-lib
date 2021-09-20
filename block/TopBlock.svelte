@@ -30,18 +30,18 @@
   </header>
 
   <aside>
-    <TopBanner {brd} {scrollPad} {scrollTop}>
+    <TopBanner {scrollPad} {scrollTop}>
       <slot name="top-banner" />
     </TopBanner>
   </aside>
 
   <nav>
-    <TopNav {brd}>
+    <TopNav>
       <slot name="top-nav" />
     </TopNav>
   </nav>
 
-  <TopMain {brd} bind:scrollPad bind:scrollTop>
+  <TopMain bind:scrollPad bind:scrollTop>
     <slot name="top-main" />
   </TopMain>
 

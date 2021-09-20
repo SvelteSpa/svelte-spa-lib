@@ -1,11 +1,11 @@
 import app from '@spa/main'
 import run from '@spa/run'
 
-export type ThenFun = (res: any) => void
-export type FailFun = (code: num, tx: str) => void
-export type AfterFun = () => void
-export type FinallyFun = () => void
-export type BusyFun = (on: bool) => void
+type ThenFun = (res: any) => void
+type FailFun = (code: num, tx: str) => void
+type AfterFun = () => void
+type FinallyFun = () => void
+type BusyFun = (on: bool) => void
 
 let isBusy = false // request in progress
 let busyReportTimeout: any = 0
