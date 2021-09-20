@@ -3,8 +3,6 @@
   import type { Brd } from '.'
   import TopHeader from './TopHeader.svelte'
   import TopBanner from './TopBanner.svelte'
-  import TopNav from './TopNav.svelte'
-  import TopMain from './TopMain.svelte'
   import TopFooter from './TopFooter.svelte'
 </script>
 
@@ -20,6 +18,12 @@
 
   let scrollPad = 0 as int
   let scrollTop = 0 as int
+
+  let onScroll = (e: any) => {
+    let t = e.target
+    scrollPad = (t.scrollHeight - t.clientHeight) as int
+    scrollTop = t.scrollTop
+  }
 </script>
 
 <f-col class="C" bind:clientWidth={w} bind:clientHeight={h}>
@@ -29,19 +33,24 @@
     </TopHeader>
   </header>
 
-  <f-col class="C">
-    <TopBanner {scrollPad} {scrollTop}>
-      <slot name="top-banner" />
-    </TopBanner>
+  <f-row class="C">
+    <f-col class="C">
+      <TopBanner {scrollPad} {scrollTop}>
+        <slot name="top-banner" />
+      </TopBanner>
 
-    <TopNav>
       <slot name="top-nav" />
-    </TopNav>
 
-    <TopMain bind:scrollPad bind:scrollTop>
-      <slot name="top-main" />
-    </TopMain>
-  </f-col>
+      <main on:scroll={onScroll}>
+        <slot name="top-main" />
+      </main>
+    </f-col>
+    <f-col>
+      <aside>
+        <slot name="top-side" />
+      </aside>
+    </f-col>
+  </f-row>
 
   <footer class="wC">
     <TopFooter {brd} let:expand>
@@ -51,7 +60,8 @@
 </f-col>
 
 <style>
-  f-col {
+  f-col,
+  f-row {
     overflow: clip;
   }
 
@@ -66,5 +76,19 @@
   header,
   footer {
     z-index: 1;
+  }
+
+  main,
+  aside {
+    flex-grow: 1;
+    overflow-y: scroll;
+  }
+
+  aside {
+    border-left: solid thin var(--sec-brd);
+  }
+
+  aside:empty {
+    display: none;
   }
 </style>

@@ -18,7 +18,7 @@
   }
 </script>
 
-<div bind:this={el} transition:slide={{ duration: 777 }}>
+<div bind:this={el}>
   {#if show}
     <div transition:slide={{ duration: 777 }}>
       <slot />

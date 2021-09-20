@@ -243,7 +243,7 @@ f-rcr {
 x-ico {
   display: inline-block;
   font-family: var(--fnt-ico);
-  font-size: 120%;
+  font-size: var(--ico-size);
 }
 
 /* sysicons, pointer */
@@ -251,7 +251,7 @@ x-icp {
   cursor: pointer;
   display: inline-block;
   font-family: var(--fnt-ico);
-  font-size: 120%;
+  font-size: var(--ico-size);
 }
 
 .caps {
