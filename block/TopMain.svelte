@@ -19,7 +19,9 @@
 <style>
   div {
     flex-grow: 1;
-    height: 100%;
     overflow-y: scroll;
+  }
+  div {
+    border: blue 2px solid;
   }
 </style>

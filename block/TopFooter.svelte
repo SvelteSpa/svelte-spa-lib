@@ -22,7 +22,7 @@
   $: x = canExpand && expand
 </script>
 
-<div class="whC">
+<div class="C">
   <BarC {brd} {onClick}>
     {#if canExpand}
       {#if wide}

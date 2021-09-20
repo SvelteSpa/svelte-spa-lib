@@ -4,7 +4,7 @@
 </script>
 
 {#if show}
-  <img class="whC" src={url} alt="" />
+  <img class="C" src={url} alt="" />
 {/if}
 
 <style>

@@ -22,28 +22,26 @@
   let scrollTop = 0 as int
 </script>
 
-<f-col class="whC" bind:clientWidth={w} bind:clientHeight={h}>
+<f-col class="C" bind:clientWidth={w} bind:clientHeight={h}>
   <header class="wC">
     <TopHeader {brd}>
       <slot name="top-header" />
     </TopHeader>
   </header>
 
-  <aside>
+  <f-col class="C">
     <TopBanner {scrollPad} {scrollTop}>
       <slot name="top-banner" />
     </TopBanner>
-  </aside>
 
-  <nav>
     <TopNav>
       <slot name="top-nav" />
     </TopNav>
-  </nav>
 
-  <TopMain bind:scrollPad bind:scrollTop>
-    <slot name="top-main" />
-  </TopMain>
+    <TopMain bind:scrollPad bind:scrollTop>
+      <slot name="top-main" />
+    </TopMain>
+  </f-col>
 
   <footer class="wC">
     <TopFooter {brd} let:expand>
@@ -53,6 +51,10 @@
 </f-col>
 
 <style>
+  f-col {
+    overflow: clip;
+  }
+
   header {
     height: var(--hdr-hgt);
   }
