@@ -15,14 +15,23 @@
   }
 </script>
 
-<div class={clsBrd('pri', brd)} on:scroll={onScroll}>
-  <slot />
-</div>
+<main class={clsBrd('pri', brd)}>
+  <div on:scroll={onScroll}>
+    <slot />
+  </div>
+  <div>Bassket</div>
+</main>
 
 <style>
-  div {
+  main {
+    display: flex;
+    flex-flow: row nowrap;
     flex-grow: 1;
     height: 100%;
+    overflow-y: hidden;
+  }
+
+  div {
     overflow-y: scroll;
   }
 </style>

@@ -44,7 +44,11 @@ let curRoute: Readable<Route> = readable(
 )
 
 // history
-async function push(route: Route, title = ''): Promise<void> {
+async function push(
+  route: Route,
+  title = '',
+  forceEvent = false
+): Promise<void> {
   await tick()
 
   history.replaceState(
@@ -56,7 +60,7 @@ async function push(route: Route, title = ''): Promise<void> {
 
   let hash = encodeRoute(route)
   if (location.hash != hash) location.hash = hash
-  else dispatchEvent(new Event('hashchange'))
+  else if (forceEvent) dispatchEvent(new Event('hashchange'))
 }
 
 async function pop(): Promise<void> {
