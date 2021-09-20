@@ -348,3 +348,8 @@ label.inp .err {
   padding: var(--p2);
   font-family: var(--fnt-pri);
 }
+
+/* debug */
+.BL {
+  border: thick solid blue;
+}

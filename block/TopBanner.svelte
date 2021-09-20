@@ -1,12 +1,9 @@
 <script context="module" lang="ts">
   import run from '@spa/run'
-  import type { Brd } from '.'
-  import { clsBrd } from '.'
   import { slide } from 'svelte/transition'
 </script>
 
 <script lang="ts">
-  export let brd: Brd = ''
   export let scrollPad = 0 as int
   export let scrollTop = 0 as int
 
@@ -21,11 +18,7 @@
   }
 </script>
 
-<div
-  bind:this={el}
-  transition:slide={{ duration: 777 }}
-  class={clsBrd('pri', brd) + ' whC'}
->
+<div bind:this={el} transition:slide={{ duration: 777 }}>
   {#if show}
     <div transition:slide={{ duration: 777 }}>
       <slot />

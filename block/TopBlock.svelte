@@ -1,10 +1,12 @@
 <script context="module" lang="ts">
   import ctx from '@spa/ctx'
   import type { Brd } from '.'
+  import { clsBrd } from '.'
   import TopHeader from './TopHeader.svelte'
   import TopBanner from './TopBanner.svelte'
   import TopNav from './TopNav.svelte'
   import TopMain from './TopMain.svelte'
+  import TopSide from './TopSide.svelte'
   import TopFooter from './TopFooter.svelte'
 </script>
 
@@ -29,21 +31,35 @@
     </TopHeader>
   </header>
 
-  <aside>
-    <TopBanner {brd} {scrollPad} {scrollTop}>
-      <slot name="top-banner" />
-    </TopBanner>
-  </aside>
+  <f-row class={clsBrd('pri', brd) + ' whC'}>
+    <main>
+      <f-col class="whC BL">
+        <div class="wC">
+          <TopBanner {scrollPad} {scrollTop}>
+            <slot name="top-banner" />
+          </TopBanner>
+        </div>
 
-  <nav>
-    <TopNav {brd}>
-      <slot name="top-nav" />
-    </TopNav>
-  </nav>
+        <f-col class="whC BL">
+          <div class="wC BL">
+            <TopNav>
+              <slot name="top-nav" />
+            </TopNav>
+          </div>
 
-  <TopMain {brd} bind:scrollPad bind:scrollTop>
-    <slot name="top-main" />
-  </TopMain>
+          <TopMain bind:scrollPad bind:scrollTop>
+            <slot name="top-main" />
+          </TopMain>
+        </f-col>
+      </f-col>
+    </main>
+
+    <aside>
+      <TopSide>
+        <slot name="top-side" />
+      </TopSide>
+    </aside>
+  </f-row>
 
   <footer class="wC">
     <TopFooter {brd} let:expand>
@@ -53,6 +69,12 @@
 </f-col>
 
 <style>
+  f-col,
+  f-row,
+  div {
+    overflow: hidden;
+  }
+
   header {
     height: var(--hdr-hgt);
   }

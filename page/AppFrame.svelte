@@ -43,7 +43,7 @@
     </p>
   </x-sysScr>
 {:else}
-  <div class="whC" bind:clientWidth={w} bind:clientHeight={h}>
+  <div class="app whC" bind:clientWidth={w} bind:clientHeight={h}>
     <slot />
   </div>
 
