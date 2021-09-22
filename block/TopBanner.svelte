@@ -8,20 +8,27 @@
   export let scrollTop = 0 as int
 
   let el: HTMLDivElement
-  let show = true
+  let hide = false
   $: if (run.inUserScroll()) {
     if (scrollTop < 20) {
-      show = true
+      hide = false
     } else {
-      if (el.clientHeight < scrollPad) show = false
+      if (el.clientHeight < scrollPad) hide = true
     }
   }
 </script>
 
-<div bind:this={el}>
-  {#if show}
-    <div transition:slide={{ duration: 777 }}>
-      <slot />
-    </div>
-  {/if}
+<div class:hide bind:this={el}>
+  <slot />
 </div>
+
+<style>
+  div {
+    max-height: 100%;
+    transition: max-height 0.7s ease-in-out;
+  }
+
+  div.hide {
+    max-height: 0;
+  }
+</style>

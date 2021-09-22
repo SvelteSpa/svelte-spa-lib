@@ -13,27 +13,19 @@ export let usrMsg = writable('')
 
 // attempt to detect if *user* is scrolling
 let inUserScroll = false
-let userScrollTimer: any
-
-let begUserScroll = () => {
-  inUserScroll = true
-}
-
-let endUserScroll = () => {
-  clearTimeout(userScrollTimer)
-  inUserScroll = false
-}
+let endUserScroll: Function
 
 let timUserScroll = () => {
-  begUserScroll()
-  userScrollTimer = setTimeout(endUserScroll, 333)
+  inUserScroll = true
+  endUserScroll()
 }
 
 export let initUserActions = () => {
+  endUserScroll = (() => (inUserScroll = false)).debounce(333)
+
   // between down .. up
   let w = window as any // because of .onmousewheel
-  w.onmousedown = begUserScroll
-  w.onmouseup = endUserScroll
+  w.onmousedown = timUserScroll
   // a while after
   w.onmousewheel = timUserScroll
   w.ontouchmove = timUserScroll
