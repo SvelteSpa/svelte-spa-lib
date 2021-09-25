@@ -5,14 +5,18 @@ type Ind = int
 type FindFun<T> = (v: T, i: Ind, a: T[]) => bool
 type WhileFun<T> = (v: T, i: Ind, a: T[]) => bool
 type EachFun<T> = (v: T, i: Ind, a: T[]) => any
+type MapFun<T> = (v: T, i: Ind, a: T[]) => T|null
+type FilterFun<T> = (v: T, i: Ind, a: T[]) => bool
 
 declare global {
   interface Array<T> {
     get sz(): int
+    set sz(int)
     find(fun: FindFun<T>): Ind | false
     findStr(val: str, caseSensitive?: bool): Ind | false
     while(fun: WhileFun<T>): Self
     each(fun: EachFun<T>): Self
+    mapFilter(mapFun: MapFun<T>, filterFun?: FilterFun<T>): T[]
     last(): T | undefined
     padded(lgt: int, v: T): T[]
   }
@@ -23,6 +27,9 @@ let $$ = Array.prototype
 Object.defineProperty($$, 'sz', {
   get: function sz() {
     return this.length
+  },
+  set: function sz(i:int) {
+    this.length=i
   },
 })
 
@@ -54,6 +61,11 @@ $$.while = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
 $$.each = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Self {
   this.forEach(fun)
   return this
+}
+
+$$.mapFilter = function <T>(mapFun: MapFun<T>, filterFun: FilterFun<T>=(_) => !!_): T[]
+{
+  return this.map(mapFun).filter(filterFun)
 }
 
 $$.last = function <T>(): T | undefined {

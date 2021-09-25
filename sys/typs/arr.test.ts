@@ -20,6 +20,15 @@ test('each', (t) => {
   }
 })
 
+test('sz', (t) => {
+  let a = [3, 2, 1]
+  t.is(3, [3, 2, 1].sz)
+  t.is(3, a.sz)
+  t.is(0, [].sz)
+  a.sz = 0 as int
+  t.is(0, a.sz)
+})
+
 test('find', (t) => {
   let a = [1, 2, 3, 4, 5]
   let find = (fun: any) => a.find(fun)
@@ -42,6 +51,13 @@ test('findStr', (t) => {
 
   t.true(0 === ['A', 'a', 'a'].findStr('a', false))
   t.true(1 === ['A', 'a', 'a'].findStr('a', true))
+})
+
+test('mapFilter', (t) => {
+  t.deepEqual(
+    ['a'],
+    ['a', 'b', 'c'].mapFilter((_) => ('a' == _ ? _ : null))
+  )
 })
 
 test('last', (t) => {
