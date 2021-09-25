@@ -46,6 +46,7 @@ let codes = {
 'home0': 59423,
 'clip0': 59435,
 'clip1': 59436,
+'pencil': 59437,
 }
 
 export default codes
