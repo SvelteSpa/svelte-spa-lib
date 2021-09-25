@@ -32,7 +32,7 @@ function lookupText(key: Key) {
   let val = dict.get(key)
   return undefined === val
     ? run.isDev
-      ? '((?))'
+      ? `((${key}))`
       : ''
     : selText(val as LangText)
 }

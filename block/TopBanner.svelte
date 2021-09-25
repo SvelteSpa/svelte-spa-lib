@@ -1,6 +1,5 @@
 <script context="module" lang="ts">
   import run from '@spa/run'
-  import { slide } from 'svelte/transition'
 </script>
 
 <script lang="ts">
