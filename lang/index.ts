@@ -90,8 +90,7 @@ type DictArr = [Key, LangText][]
 type DictObj = { [key: string]: LangText }
 
 function addDict(data: DictArr | DictObj, refresh = true) {
-  if (O(data).isArr())
-    (data as DictArr).forEach(([k, v]) => addText(k, v, false))
+  if (O(data).isArr()) (data as DictArr).each(([k, v]) => addText(k, v, false))
   else O(data as DictObj).each((v, k) => addText(k, v, false))
   if (refresh) signal()
 }

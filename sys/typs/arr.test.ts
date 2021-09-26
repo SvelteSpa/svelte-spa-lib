@@ -39,6 +39,15 @@ test('find', (t) => {
   t.true(2 === find((v: any) => 3 == v))
 })
 
+test('findVal', (t) => {
+  let a = [1, 2, 3, 4, 5]
+  let find = (val: any) => a.findVal(val)
+
+  t.true(false === find(-1))
+  t.true(0 === find(1))
+  t.true(2 === find(3))
+})
+
 test('findStr', (t) => {
   t.true(false === [].findStr('1'))
   t.true(false === [1].findStr('1'))

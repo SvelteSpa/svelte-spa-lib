@@ -13,6 +13,7 @@ declare global {
     get sz(): int
     set sz(int)
     find(fun: FindFun<T>): Ind | false
+    findVal(val: T): Ind | false
     findStr(val: str, caseSensitive?: bool): Ind | false
     while(fun: WhileFun<T>): Self
     each(fun: EachFun<T>): Self
@@ -41,6 +42,10 @@ $$.find = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Ind | false {
   }
 
   return false
+}
+
+$$.findVal = function <T>(val: T): Ind | false {
+  return this.find((_)=>_==val)
 }
 
 $$.findStr = function (val: str, cs = false): Ind | false {
