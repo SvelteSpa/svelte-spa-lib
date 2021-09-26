@@ -45,7 +45,7 @@ $$.find = function <T>(fun: (v: T, i: Ind, a: T[]) => bool): Ind | false {
 }
 
 $$.findVal = function <T>(val: T): Ind | false {
-  return this.find((_)=>_==val)
+  return this.find((_:T)=>_==val)
 }
 
 $$.findStr = function (val: str, cs = false): Ind | false {

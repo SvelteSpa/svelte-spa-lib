@@ -37,7 +37,7 @@ if (window) {
   }
 }
 
-let init = (name: str, ver: str) => {
+let init = (name: str, ver: str, persist?: { save: FnVoid; load: FnVoid }) => {
   $.name = name
   $.ver = ver
 
@@ -50,10 +50,12 @@ let init = (name: str, ver: str) => {
   initUserActions()
 
   window.onbeforeunload = () => {
-    user.store()
+    user.save()
+    persist?.save()
   }
 
-  user.restore()
+  user.load()
+  persist?.load()
 }
 
 let setTitle = (appTitle: str, docTitle: str) => {
